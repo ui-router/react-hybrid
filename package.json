@@ -1,0 +1,49 @@
+{
+  "name": "@uirouter/react-hybrid",
+  "version": "0.0.1",
+  "scripts": {
+    "clean": "shx rm -rf lib _bundles",
+    "build": "npm run clean && ngc",
+    "package": "npm run build && rollup -c && rollup -c --environment MINIFY",
+    "prepare": "npm run package"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@uirouter/angularjs": "git://github.com/angular-ui/ui-router#1.0.3-hybrid-2.0.0-5",
+    "@uirouter/core": "=5.0.4",
+    "@uirouter/react": "git://github.com/ui-router/react#0.5.0-react-hybrid-0.0.1"
+  },
+  "peerDependencies": {
+    "angular": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/angular": "~1.6.1",
+    "@types/jquery": "^1.10.31",
+    "@types/react": "^15.0.27",
+    "@types/react-dom": "^15.5.0",
+    "angular": "~1.6.1",
+    "awesome-typescript-loader": "^3.0.0",
+    "conventional-changelog": "^1.1.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "readline-sync": "^1.4.7",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-progress": "^0.2.1",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-uglify": "^1.0.2",
+    "rollup-plugin-visualizer": "^0.2.1",
+    "rxjs": "^5.0.0",
+    "shx": "^0.2.2",
+    "typescript": "^2.1.5",
+    "webpack": "^1.13.1"
+  },
+  "main": "_bundles/ui-router-react-hybrid.js",
+  "module": "lib-esm/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ui-router/react-hybrid.git"
+  }
+}
