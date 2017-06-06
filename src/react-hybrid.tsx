@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as angular from 'angular';
-import { IDocumentService } from 'angular';
 import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
 import { UIView, ReactViewConfig, ReactViewDeclaration } from '@uirouter/react';
 import { StateObject, UIRouter, PathNode } from '@uirouter/core';
@@ -30,41 +29,32 @@ hybridModule.config(['$uiRouterProvider', (router: UIRouter) => {
 
     return views;
   });
-
-  router.stateRegistry.decorator('views', (state: StateObject, parentDecorator) => {
-    const views = parentDecorator(state);
-
-    const BindResolvesToProps = (Component: any) => ({ resolves, ...props }: any) =>
-        React.createElement(Component, { ...props, ...resolves });
-
-    Object.keys(views).forEach(key => {
-      const view: ReactViewDeclaration = views[key];
-      if (view.$type === 'react' && typeof view.component === 'function') {
-        view.component = BindResolvesToProps(view.component);
-      }
-    });
-
-    return views;
-  });
 }]);
 
-
-// When an angular `ui-view` is instantiated, also create an adapter (which creates a react UIView)
-hybridModule.directive('uiView', function ($document: IDocumentService) {
+// When an angularjs `ui-view` is instantiated, also create an adapter (which creates a react UIView)
+hybridModule.directive('uiView', function () {
   return {
     restrict: 'AE',
-    link: function(scope, elem) {
-      const el = elem[0];
-      const reactUiViewEl = $document[0].createElement('react-ui-view');
-      const parentNode = el.parentNode;
-      parentNode.insertBefore(reactUiViewEl, el);
+    compile: function(tElem, tAttrs) {
+      let { name, uiView } = tAttrs;
+      name = name || uiView || '$default';
+      tElem.html(`<react-ui-view-adapter name="${name}">default content</react-ui-view-adapter>`);
+    }
+  }
+});
 
-      const reactEl = React.createElement(UIRouterContextComponent, null, React.createElement(UIView));
-      ReactDOM.render(reactEl, reactUiViewEl, null);
+// This angularjs adapter (inside an angularjs ui-view) creates the react UIView and provides it the correct context
+hybridModule.directive('reactUiViewAdapter', function () {
+  return {
+    restrict: 'E',
+    link: function(scope, elem, attrs) {
+      const el = elem[0];
+      const reactEl = React.createElement(UIRouterContextComponent, { parentContextLevel: '3' }, React.createElement(UIView, attrs));
+      ReactDOM.render(reactEl, el, null);
 
       scope.$on('$destroy', () => {
-        ReactDOM.unmountComponentAtNode(reactUiViewEl);
-        reactUiViewEl.remove();
+        ReactDOM.unmountComponentAtNode(el);
+        el.remove();
       });
     }
   }
@@ -78,6 +68,10 @@ class ParentUIViewAddressAdapter {
   public get context() { return this._ngdata.$cfg.viewDecl.$context || this._ngdata.$uiView.creationContext; }
 }
 
+export interface IUIRouterContextComponentProps {
+  parentContextLevel?: string;
+}
+
 export interface IUIRouterContextComponentState {
   router: UIRouter;
   parentUIViewAddress: any;
@@ -86,7 +80,7 @@ export interface IUIRouterContextComponentState {
 // Provide react context necessary for UIView, UISref and UISrefActive
 // Gets the context from the parent react UIView (if component tree is all react)
 // Gets the context from the from parent angular ui-view if no parent reat UIView is available
-export class UIRouterContextComponent extends React.Component<any, IUIRouterContextComponentState> {
+export class UIRouterContextComponent extends React.Component<IUIRouterContextComponentProps, IUIRouterContextComponentState> {
   // context from parent react UIView
   public static contextTypes = {
     router: React.PropTypes.object,
@@ -97,6 +91,10 @@ export class UIRouterContextComponent extends React.Component<any, IUIRouterCont
   public static childContextTypes = {
     router: React.PropTypes.object,
     parentUIViewAddress: React.PropTypes.object,
+  };
+
+  public static defaultProps: Partial<IUIRouterContextComponentProps> = {
+    parentContextLevel: "0",
   };
 
   public state: IUIRouterContextComponentState = {
@@ -123,7 +121,12 @@ export class UIRouterContextComponent extends React.Component<any, IUIRouterCont
     }
 
     // from angular
-    const $uiView = this.ref && angular.element(this.ref).inheritedData('$uiView');
+    let ref = this.ref;
+    let steps = parseInt(this.props.parentContextLevel);
+    steps = isNaN(steps) ? 0 : steps;
+
+    while (steps--) ref = ref.parentElement;
+    const $uiView = ref && angular.element(ref).inheritedData('$uiView');
     return $uiView && $uiView && new ParentUIViewAddressAdapter($uiView);
   }
 
@@ -142,13 +145,20 @@ export class UIRouterContextComponent extends React.Component<any, IUIRouterCont
   }
 
   private refCallback = (ref: HTMLElement) => {
-    this.ref = ref;
+    if (ref && ref !== this.ref) {
+      this.ref = ref;
+      this.setState({});
+    }
   };
 
   public render() {
-    const ready = !!this.state.router;
-    const children = ready ? this.props.children : null;
-    return <div ref={this.refCallback}>{children}</div>
+    const { router  } = this.state;
+    const { children  } = this.props;
+
+    const ready = !!router;
+    const childrenCount = React.Children.count(children);
+    const child = ready && (childrenCount === 1 ? React.Children.only(children) : <div>{children}</div>);
+    return (this.ref ? child : <div ref={this.refCallback} />);
   }
 }
 
@@ -173,8 +183,7 @@ export class UIRouterContextComponent extends React.Component<any, IUIRouterCont
  *
  * @param Component the react component to wrap
  */
-export function UIRouterContext(Component: React.ComponentClass<any>) {
-  console.log('component', Component);
+export function UIRouterContext<T>(Component: React.ComponentClass<T>) {
   return class extends React.Component<any, any> {
     public render() {
       return (
@@ -183,6 +192,6 @@ export function UIRouterContext(Component: React.ComponentClass<any>) {
         </UIRouterContextComponent>
       );
     }
-  } as React.ComponentClass<any>;
+  } as React.ComponentClass<T>;
 }
 
