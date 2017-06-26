@@ -1,3 +1,10 @@
+<a name="0.0.3"></a>
+## 0.0.3 (2017-06-26)
+
+* feat(adapter): Enable AngularJS ui-sref and ui-sref-active for angular2react children of react UIVie ([ae11777](https://github.com/ui-router/react-hybrid/commit/ae11777))
+
+
+
 <a name="0.0.2"></a>
 ## 0.0.2 (2017-06-23)
 
