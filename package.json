@@ -1,17 +1,19 @@
 {
   "name": "@uirouter/react-hybrid",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "clean": "shx rm -rf lib lib-esm _bundles",
     "build": "npm run clean && tsc && tsc --module es6 --outDir lib-esm",
     "package": "npm run build && rollup -c && rollup -c --environment MINIFY",
+    "watch": "watch 'npm run build && yalc push' src",
     "prepare": "npm run package"
   },
   "license": "MIT",
   "dependencies": {
     "@uirouter/angularjs": "git://github.com/angular-ui/ui-router#1.0.3-hybrid-2.0.0-5",
     "@uirouter/core": "=5.0.4",
-    "@uirouter/react": "git://github.com/ui-router/react#0.5.0-react-hybrid-0.0.1"
+    "@uirouter/react": "git://github.com/ui-router/react#0.5.0-react-hybrid-0.0.1",
+    "watch": "^1.0.2"
   },
   "peerDependencies": {
     "angular": "^1.5.0"
