@@ -191,9 +191,9 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
  * A decorator that provides the UIRouter state context allowing
  * React components to use the @uirouter/react components such as UISref
  *
- *
  * Example:
  *
+ * @UIRouterContext
  * class MyComponent extends React.Component<any, any> {
  *   render() {
  *     return (
@@ -208,15 +208,10 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
  *
  * @param Component the react component to wrap
  */
-export function UIRouterContext<T>(Component: React.ComponentClass<T>) {
+export function UIRouterContext(Component: { new(...args: any[]): React.Component<any, any> }): any {
   return class extends React.Component<any, any> {
     public render() {
-      return (
-        <UIRouterContextComponent>
-          <Component {...this.props} />
-        </UIRouterContextComponent>
-      );
+      return <UIRouterContextComponent>{React.createElement(Component, this.props)}</UIRouterContextComponent>;
     }
-  } as React.ComponentClass<T>;
+  };
 }
-
