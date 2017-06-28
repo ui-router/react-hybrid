@@ -1,3 +1,10 @@
+<a name="0.0.4"></a>
+## 0.0.4 (2017-06-28)
+
+* fix(UIRouterContext): Fix UIRouterContext decorator ([4a83102](https://github.com/ui-router/react-hybrid/commit/4a83102))
+
+
+
 <a name="0.0.3"></a>
 ## 0.0.3 (2017-06-26)
 
