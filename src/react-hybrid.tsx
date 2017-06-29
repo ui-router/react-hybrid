@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as angular from 'angular';
 import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
-import { UIView, ReactViewConfig, ReactViewDeclaration } from '@uirouter/react';
+import { UIView, ReactViewConfig, ReactViewDeclaration, UIViewProps } from '@uirouter/react';
 import { StateObject, UIRouter, PathNode } from '@uirouter/core';
 
 export const UI_ROUTER_REACT_HYBRID = 'ui.router.react.hybrid';
@@ -73,7 +73,7 @@ hybridModule.directive('reactUiViewAdapter', function () {
         }
       };
 
-      let uiView = React.createElement(UIView, { ...attrs, render, ref });
+      let uiView = React.createElement(UIView, { ...attrs, render, ref } as UIViewProps);
       const reactEl = React.createElement(UIRouterContextComponent, { parentContextLevel: '3' }, uiView);
       ReactDOM.render(reactEl, el, null);
 

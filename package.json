@@ -10,13 +10,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uirouter/angularjs": "git://github.com/angular-ui/ui-router#1.0.3-hybrid-2.0.0-5",
-    "@uirouter/core": "=5.0.4",
-    "@uirouter/react": "git://github.com/ui-router/react#0.5.0-react-hybrid-0.0.1",
-    "watch": "^1.0.2"
+    "@uirouter/angularjs": "git://github.com/angular-ui/ui-router#SNAPSHOT-20170629",
+    "@uirouter/core": "=5.0.5",
+    "@uirouter/react": "git://github.com/ui-router/react#SNAPSHOT-20170629"
   },
   "peerDependencies": {
-    "angular": "^1.5.0"
+    "angular": "^1.5.0",
+    "react": "^15.0.0"
   },
   "devDependencies": {
     "@types/angular": "~1.6.1",
@@ -38,7 +38,8 @@
     "rollup-plugin-visualizer": "^0.2.1",
     "rxjs": "^5.0.0",
     "shx": "^0.2.2",
-    "typescript": "^2.1.5",
+    "typescript": "~2.4.0",
+    "watch": "^1.0.2",
     "webpack": "^1.13.1"
   },
   "main": "_bundles/ui-router-react-hybrid.js",

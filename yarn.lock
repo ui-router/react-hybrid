@@ -22,21 +22,21 @@
   version "15.0.27"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.27.tgz#d64ad424aa24a101fd50cdeae6eab3d53e65513d"
 
-"@uirouter/angularjs@git://github.com/angular-ui/ui-router#1.0.3-hybrid-2.0.0-5":
-  version "1.0.3-hybrid-2.0.0-5"
-  resolved "git://github.com/angular-ui/ui-router#f429ea3b40fdc85dfdd9e2808ef14c73c071184a"
+"@uirouter/angularjs@git://github.com/angular-ui/ui-router#SNAPSHOT-20170629":
+  version "1.0.5"
+  resolved "git://github.com/angular-ui/ui-router#2c4ccc2b5f544afffa86bd9e4ac182b6907589e1"
   dependencies:
-    "@uirouter/core" "^5.0.3"
+    "@uirouter/core" "^5.0.5"
 
-"@uirouter/core@=5.0.4", "@uirouter/core@^5.0.3":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.4.tgz#798b9ec0f2cf58b234cce75fa2634b4698a44aca"
+"@uirouter/core@=5.0.5", "@uirouter/core@^5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.5.tgz#4fafae8b89e1bee321b0ed32e69ab66547c055c6"
 
-"@uirouter/react@git://github.com/ui-router/react#0.5.0-react-hybrid-0.0.1":
-  version "0.5.0-react-hybrid-0.0.1"
-  resolved "git://github.com/ui-router/react#75c7efb4c475a591d3b451053b20601a83e3fc8c"
+"@uirouter/react@git://github.com/ui-router/react#SNAPSHOT-20170629":
+  version "0.5.0"
+  resolved "git://github.com/ui-router/react#d2f723f88ccd3e7615f5c3893e00b21b4d15c681"
   dependencies:
-    "@uirouter/core" "^5.0.3"
+    "@uirouter/core" "^5.0.5"
     classnames "^2.2.5"
 
 JSONStream@^1.0.4:
@@ -2114,9 +2114,9 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
-typescript@^2.1.5:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.2.tgz#f0f045e196f69a72f06b25fd3bd39d01c3ce9984"
+typescript@~2.4.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.4.1.tgz#c3ccb16ddaa0b2314de031e7e6fee89e5ba346bc"
 
 ua-parser-js@^0.7.9:
   version "0.7.12"
