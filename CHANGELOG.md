@@ -1,3 +1,10 @@
+<a name="0.0.5"></a>
+## 0.0.5 (2017-06-29)
+
+* fix(typescript): Apply updates for typescript 2.4. Update to new snapshots of @uirouter/angularjs+re ([c836579](https://github.com/ui-router/react-hybrid/commit/c836579))
+
+
+
 <a name="0.0.4"></a>
 ## 0.0.4 (2017-06-28)
 
