@@ -22,9 +22,15 @@ hybridModule.config(['$uiRouterProvider', (router: UIRouter) => {
 
     const self = state.self;
     const selfViews = self.views || { $default: self };
+    const isReactComponent = cmp => cmp instanceof React.Component ||
+          cmp && cmp.prototype && cmp.prototype.isReactComponent ||
+          cmp && cmp.prototype && typeof cmp.prototype.render === 'function';
 
     Object.keys(views).forEach(key => {
-      views[key].$type = selfViews[key].$type || views[key].$type;
+      const view = views[key];
+      const selfView = selfViews[key];
+      const reactType = isReactComponent(view.component) && 'react';
+      view.$type = selfViews[key].$type || reactType || view.$type;
     });
 
     return views;
