@@ -1,3 +1,10 @@
+<a name="0.0.6"></a>
+## 0.0.6 (2017-07-07)
+
+* feat(view): Auto-detect react component ([21e9d98](https://github.com/ui-router/react-hybrid/commit/21e9d98))
+
+
+
 <a name="0.0.5"></a>
 ## 0.0.5 (2017-06-29)
 
