@@ -1,3 +1,11 @@
+<a name="0.0.7"></a>
+## 0.0.7 (2017-07-12)
+
+* fix(yarn): Publish uirouter/react and uirouter/angularjs to npm, not github tags ([c8569fe](https://github.com/ui-router/react-hybrid/commit/c8569fe))
+* feat(uiView): Allow routing either angularjs or react components to all ui-views ([3dff2df](https://github.com/ui-router/react-hybrid/commit/3dff2df))
+
+
+
 <a name="0.0.6"></a>
 ## 0.0.6 (2017-07-07)
 
