@@ -28,19 +28,19 @@
   version "15.0.27"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.27.tgz#d64ad424aa24a101fd50cdeae6eab3d53e65513d"
 
-"@uirouter/angularjs@git://github.com/angular-ui/ui-router#SNAPSHOT-20170629":
-  version "1.0.5"
-  resolved "git://github.com/angular-ui/ui-router#2c4ccc2b5f544afffa86bd9e4ac182b6907589e1"
+"@uirouter/angularjs@1.0.5-SNAPSHOT.20170711":
+  version "1.0.5-SNAPSHOT.20170711"
+  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.5-SNAPSHOT.20170711.tgz#6cb059062cc0c2aada6b85b820b9ef6c85eee878"
   dependencies:
     "@uirouter/core" "^5.0.5"
 
-"@uirouter/core@=5.0.5", "@uirouter/core@^5.0.5":
+"@uirouter/core@5.0.5", "@uirouter/core@^5.0.5":
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.5.tgz#4fafae8b89e1bee321b0ed32e69ab66547c055c6"
 
-"@uirouter/react@git://github.com/ui-router/react#SNAPSHOT-20170629":
-  version "0.5.0"
-  resolved "git://github.com/ui-router/react#d2f723f88ccd3e7615f5c3893e00b21b4d15c681"
+"@uirouter/react@0.5.1-SNAPSHOT.20170711":
+  version "0.5.1-SNAPSHOT.20170711"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.5.1-SNAPSHOT.20170711.tgz#fabfceaa52de5083043f50dbad138cdbf447e92e"
   dependencies:
     "@uirouter/core" "^5.0.5"
     classnames "^2.2.5"

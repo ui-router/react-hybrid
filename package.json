@@ -10,9 +10,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uirouter/angularjs": "git://github.com/angular-ui/ui-router#SNAPSHOT-20170629",
-    "@uirouter/core": "=5.0.5",
-    "@uirouter/react": "git://github.com/ui-router/react#SNAPSHOT-20170629",
+    "@uirouter/angularjs": "1.0.5-SNAPSHOT.20170711",
+    "@uirouter/core": "5.0.5",
+    "@uirouter/react": "0.5.1-SNAPSHOT.20170711",
     "angular2react": "^2.0.3",
     "lodash.kebabcase": "^4.1.1"
   },
