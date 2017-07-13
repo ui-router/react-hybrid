@@ -1,3 +1,10 @@
+<a name="0.0.9"></a>
+## 0.0.9 (2017-07-13)
+
+* fix(build): Import uirouter/react and uirouter/angularjs libs from index.js for webpack, etc ([a936996](https://github.com/ui-router/react-hybrid/commit/a936996))
+
+
+
 <a name="0.0.8"></a>
 ## 0.0.8 (2017-07-13)
 
