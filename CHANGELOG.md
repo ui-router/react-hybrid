@@ -1,3 +1,11 @@
+<a name="0.0.8"></a>
+## 0.0.8 (2017-07-13)
+
+* docs(README): Remove limitation from docs because the limitation is no more! ([3684428](https://github.com/ui-router/react-hybrid/commit/3684428))
+* fix(uiView): Fix nested UIView lifecycle by waiting for `ref` before rendering a component ([cdac3b7](https://github.com/ui-router/react-hybrid/commit/cdac3b7))
+
+
+
 <a name="0.0.7"></a>
 ## 0.0.7 (2017-07-12)
 
