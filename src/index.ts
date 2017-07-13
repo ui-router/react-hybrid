@@ -1,6 +1,7 @@
-export * from './angularJSModule';
-import './decorateAngularJSUIView';
-import './reactUIViewMonkeyPatch';
 import './decorateUIRouterViewConfigs';
-export * from './UIRouterReactContext';
-export * from './UIRouterReactContextDecorator';
+import './angularjs/UIViewDecorator';
+import './react/UIViewMonkeyPatch';
+
+export * from './angularjs/module';
+export * from './react/UIRouterReactContext';
+export * from './react/UIRouterReactContextDecorator';

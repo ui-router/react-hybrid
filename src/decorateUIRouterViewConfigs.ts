@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { hybridModule } from './angularJSModule';
+import { hybridModule } from './angularjs/module';
 import { PathNode, StateObject, UIRouter } from '@uirouter/core';
 import { ReactViewConfig, ReactViewDeclaration } from '@uirouter/react';
 

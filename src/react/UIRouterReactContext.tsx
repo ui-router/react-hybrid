@@ -106,8 +106,20 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
  * Uses the ui-view element's data
  */
 class ParentUIViewAddressAdapter {
-  constructor(private _ngdata: UIViewData) { }
-  public get fqn() { return this._ngdata.$uiView.fqn; }
-  public get context() { return this._ngdata.$cfg.viewDecl.$context || this._ngdata.$uiView.creationContext; }
-}
+  constructor(private _ngdata: UIViewData) {
+    if (!_ngdata) throw new Error("@uirouter/react-hybrid: Address Adapter created with no _ngdata parameter.")
+  }
 
+  public get fqn() {
+    return this._ngdata.$uiView.fqn;
+  }
+
+  public get context() {
+    if (!this._ngdata || !this._ngdata.$cfg || !this._ngdata.$cfg.viewDecl) {
+      console.log(this._ngdata);
+      throw new Error("@uirouter/react-hybrid: Uh oh. Views are in an invalid state. Parent UIView has no $cfg or viewDecl");
+    }
+
+    return this._ngdata.$cfg.viewDecl.$context || this._ngdata.$uiView.creationContext;
+  }
+}

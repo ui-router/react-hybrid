@@ -2,8 +2,8 @@ import { UIView } from '@uirouter/react';
 import * as React from 'react';
 // Hopefully temporary until angular2react supports `@` bindings
 // import { angular2react } from 'angular2react';
-import { angular2react } from './angular2react';
-import { hybridModule } from './angularJSModule';
+import { angular2react } from '../angular2react';
+import { hybridModule } from '../angularjs/module';
 
 
 /**
