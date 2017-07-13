@@ -31,12 +31,11 @@ $stateProvider.state({
 
 ```
 
-When routing to a React component, that component uses the standard
-[React directives (UIView and UISref) from `@uirouter/react`](https://ui-router.github.io/react/docs/latest/modules/components.html).
+When routing to a React component, that component can use the standard
+[React directives (UIView, UISref, UISrefActive) from `@uirouter/react`](https://ui-router.github.io/react/docs/latest/modules/components.html).
 
 When routing to an AngularJS component or template, that component uses the standard
-[AngularJS directives (ui-view and ui-sref) from `@uirouter/angularjs`](https://ui-router.github.io/ng1/docs/latest/modules/directives.html).
-
+[AngularJS directives (ui-view, ui-sref, ui-sref-active) from `@uirouter/angularjs`](https://ui-router.github.io/ng1/docs/latest/modules/directives.html).
 
 ### Getting started
 
@@ -50,7 +49,7 @@ dependencies: {
   "react": "^15.4.0",
   "react-dom": "^15.4.0",
    ...
-  "@uirouter/react-hybrid": "^0.0.1",
+  "@uirouter/react-hybrid": "^0.0.8",
   ...
 }
 ```
@@ -91,16 +90,9 @@ Use `component:` in your state declaration.
 var leaf = { 
   name: 'foo.bar.leaf',
   url: '/leaf',
-  component: MyRaectComponentClass 
+  component: MyReactComponentClass
 };
 $stateProvider.state(leaf);
 ```
 
-### Limitations:
 
-We currently support routing React and AngularJS components into an AngularJS `ui-view`.
-However, we do not support routing AngularJS components into a React `UIView`.
-
-If you create a React `UIView`, then any nested `UIView` must also be React.
-
-Because of this, apps should be migrated starting from leaf states/views and work up towards the root state/view.
