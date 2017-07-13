@@ -1,3 +1,6 @@
+import '@uirouter/angularjs';
+import '@uirouter/react';
+
 import './decorateUIRouterViewConfigs';
 import './angularjs/UIViewDecorator';
 import './react/UIViewMonkeyPatch';
