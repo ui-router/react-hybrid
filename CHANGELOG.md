@@ -1,3 +1,11 @@
+<a name="0.0.10"></a>
+## 0.0.10 (2017-07-14)
+
+* feat(uiView): Render angular ui-view manually, not using angular2react dependencyj ([ada97c8](https://github.com/ui-router/react-hybrid/commit/ada97c8))
+* chore(build): Add missing rollup config ([f686175](https://github.com/ui-router/react-hybrid/commit/f686175))
+
+
+
 <a name="0.0.9"></a>
 ## 0.0.9 (2017-07-13)
 
