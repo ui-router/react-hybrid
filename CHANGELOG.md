@@ -1,3 +1,9 @@
+<a name="0.0.12"></a>
+## [0.0.12](https://github.com/ui-router/react-hybrid/compare/0.0.11...0.0.12) (2017-07-14)
+
+Fix botched 0.0.11 release
+
+
 <a name="0.0.11"></a>
 ## [0.0.11](https://github.com/ui-router/react-hybrid/compare/0.0.10...0.0.11) (2017-07-14)
 
