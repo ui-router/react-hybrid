@@ -12,9 +12,7 @@
   "dependencies": {
     "@uirouter/angularjs": "1.0.5-SNAPSHOT.20170711",
     "@uirouter/core": "5.0.5",
-    "@uirouter/react": "0.5.1-SNAPSHOT.20170711",
-    "angular2react": "^2.0.3",
-    "lodash.kebabcase": "^4.1.1"
+    "@uirouter/react": "0.5.1-SNAPSHOT.20170711"
   },
   "peerDependencies": {
     "angular": "^1.5.0",

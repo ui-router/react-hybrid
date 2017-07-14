@@ -42,13 +42,21 @@ function onwarn(warning) {
 
 function isExternal(id) {
   let externals = [
-    /^@uirouter\/.*/,
-    /^react(?:-dom)?$/,
-    /^angular$/,
+    '@uirouter/core',
+    '@uirouter/angularjs',
+    '@uirouter/react',
+    'react',
+    'react-dom',
+    'angular',
   ];
-  let external = externals.map(regex => regex.exec(id)).reduce((acc, val) => acc || !!val, false);
-console.log((external ? "External: " : "Internal: ") + id);
-  return external;
+
+  let regexps = externals.map(e => [ 
+    new RegExp(`^${e}$`),
+    // new RegExp(`commonjs-proxy.${e}$`),
+    new RegExp(`node_modules/${e}`),
+  ]).reduce((acc, a) => acc.concat(a), []);
+
+  return regexps.map(regex => regex.exec(id)).reduce((acc, val) => acc || !!val, false);
 }
 
 const CONFIG = {
