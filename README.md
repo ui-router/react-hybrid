@@ -96,3 +96,48 @@ $stateProvider.state(leaf);
 ```
 
 
+## How it works
+
+### React and AngularJS ui-views
+
+An AngularJS `<ui-view>` can have default content.
+This default content is rendered when no state is filling the `ui-view` with a component.
+For example, a parent state may render a `ui-view` portal, but want `Default Content` to display
+when no child state is active: `<ui-view>Default Content</ui-view>`.
+
+The `@uirouter/react-hybrid` project **sets the default content to an adapter component**, `<react-ui-view-adapter>`.
+The `react-ui-view-adapter` then renders a React `<UIView/>`.
+
+When a state loads an AngularJS view into the AngularJS `<ui-view>`, it replaces the `react-ui-view-adapter` default content.
+
+When a state loads a React Component into the React `<UIView/>` component, it is nested inside the AngularJS components like so:
+
+```html
+<ui-view> // angularjs
+  <react-ui-view-adapter> // angularjs
+    <UIView> // react
+      <RoutedReactComponent/> //react
+    </UIView>
+  </react-ui-view-adapter>
+</ui-view>
+```
+
+### Providing "context" to children
+
+In AngularJS, each `<ui-view>` provides the state context to its children elements, such as `ui-sref` or `ui-view`.
+The state context allows a `ui-sref` to use relative links, for example.
+AngularJS provides this context by setting hidden data on its DOM element, using `angular.element(el).data('$uiView')`.
+Any nested `ui-view` or `ui-sref` fetches the context by asking for `angular.element(childel).inheritedData('$uiView')`.
+
+In React, each `UIView` provides the state context to its children elements using [React context](https://facebook.github.io/react/docs/context.html).
+The nested `UIView` or `UISref` fetches the state context using the React context API.
+
+There is some glue provided by `@uirouter/react-hybrid` which bridges these two context mechanisms.
+When a React `UIView` component is rendered, it is wrapped in a `UIRouterReactContext` component.
+The component finds the state context by looking first via React props, and second via AngularJS DOM data.
+It then provides the state context to its children using React props.
+
+The `<react-ui-view-adapter>` wraps a React `UIView` component.
+When the react `UIView` is filled by a state's react component, the `react-ui-view-adapter` gets the state context for the newly filled `UIView`.
+It then provides that context to AngularJS components using AngularJS DOM data.
+

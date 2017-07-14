@@ -22,8 +22,14 @@ export class AngularUIView extends React.Component<any, any> {
   }
 
   render() {
-    const props = Object.assign({}, this.props);
-    props.ref = this.compile.bind(this);
+    const { className, ...restProps } = this.props;
+
+    let props = {
+      ...restProps,
+      class: className,
+      ref: this.compile.bind(this),
+    };
+
     return React.createElement('ui-view', props);
   }
 
