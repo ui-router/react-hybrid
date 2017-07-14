@@ -31,7 +31,7 @@ if (!readlineSync.keyInYN('Ready to publish?')) {
 util.ensureCleanMaster('master');
 
 _exec('npm run package');
-_exec(`npm run docs`);
+// _exec(`npm run docs`);
 
 // publish to npm first
 _exec(`npm publish`);
