@@ -19,7 +19,7 @@ hybridModule.directive('uiView', function () {
 // This angularjs adapter (inside an angularjs ui-view) creates the react UIView and provides it the correct context
 // It also allows angularjs children created inside the react view (via angular2react or whatever) to access the correct
 // context from the react UIView
-hybridModule.directive('reactUiViewAdapter', function () {
+hybridModule.directive('reactUiViewAdapter', ['$routeReduxStore', function ($routeReduxStore) {
   return {
     restrict: 'E',
     link: function (scope, elem, attrs) {
@@ -61,7 +61,7 @@ hybridModule.directive('reactUiViewAdapter', function () {
 
       function renderReactUIView() {
         const uiView = React.createElement(UIView, { ...attrs, render, ref, wrap: false } as UIViewProps);
-        const reactEl: React.ReactElement<any> = React.createElement(UIRouterContextComponent, { parentContextLevel: '3' }, uiView);
+        const reactEl: React.ReactElement<any> = React.createElement(UIRouterContextComponent, { parentContextLevel: '3', reduxStore: $routeReduxStore }, uiView);
         ReactDOM.render<any>(reactEl, el as any);
       }
 
@@ -73,4 +73,4 @@ hybridModule.directive('reactUiViewAdapter', function () {
       renderReactUIView();
     }
   };
-});
+}]);

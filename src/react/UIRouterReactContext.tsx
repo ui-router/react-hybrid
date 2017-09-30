@@ -6,11 +6,13 @@ import { UIRouter } from '@uirouter/core';
 
 export interface IUIRouterContextComponentProps {
   parentContextLevel?: string;
+  reduxStore?: object
 }
 
 export interface IUIRouterContextComponentState {
   router: UIRouter;
   parentUIViewAddress: any;
+  reduxStore?: object
 }
 
 /**
@@ -30,15 +32,18 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
   public static childContextTypes = {
     router: PropTypes.object,
     parentUIViewAddress: PropTypes.object,
+    store: PropTypes.object,
   };
 
   public static defaultProps: Partial<IUIRouterContextComponentProps> = {
     parentContextLevel: "0",
+    reduxStore: null,
   };
 
   public state: IUIRouterContextComponentState = {
     router: null,
     parentUIViewAddress: null,
+    reduxStore: null,
   };
 
   private ref: HTMLElement;
@@ -73,6 +78,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
     return {
       router: this.state.router,
       parentUIViewAddress: this.state.parentUIViewAddress,
+      store: this.state,
     };
   }
 
