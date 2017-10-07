@@ -8,6 +8,7 @@
     "lib": ["es6", "dom"],
     "jsx": "react",
     "sourceMap": true,
+    "inlineSources": true,
     "pretty": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
