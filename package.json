@@ -10,9 +10,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uirouter/angularjs": "1.0.5-SNAPSHOT.20170711",
-    "@uirouter/core": "5.0.5",
-    "@uirouter/react": "0.5.1-SNAPSHOT.20170711"
+    "@uirouter/angularjs": "1.0.8",
+    "@uirouter/core": "5.0.10",
+    "@uirouter/react": "0.5.3"
   },
   "peerDependencies": {
     "angular": "^1.5.0",

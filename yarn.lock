@@ -2,13 +2,7 @@
 # yarn lockfile v1
 
 
-"@types/angular-mocks@^1.5.9":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@types/angular-mocks/-/angular-mocks-1.5.10.tgz#bb3728bfc156a3bc35dfbfcc2d332e175284fba6"
-  dependencies:
-    "@types/angular" "*"
-
-"@types/angular@*", "@types/angular@>=1.5.0", "@types/angular@^1.6.16", "@types/angular@~1.6.1":
+"@types/angular@~1.6.1":
   version "1.6.17"
   resolved "https://registry.yarnpkg.com/@types/angular/-/angular-1.6.17.tgz#5bd59e77350943ffbffb8bb98dfe718acbb6ed27"
   dependencies:
@@ -24,25 +18,25 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^15.0.22", "@types/react@^15.0.27":
+"@types/react@*", "@types/react@^15.0.27":
   version "15.0.27"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.27.tgz#d64ad424aa24a101fd50cdeae6eab3d53e65513d"
 
-"@uirouter/angularjs@1.0.5-SNAPSHOT.20170711":
-  version "1.0.5-SNAPSHOT.20170711"
-  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.5-SNAPSHOT.20170711.tgz#6cb059062cc0c2aada6b85b820b9ef6c85eee878"
+"@uirouter/angularjs@1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.8.tgz#09e7528884752fa4071ab1cf74325f10c6d6d8c9"
   dependencies:
-    "@uirouter/core" "^5.0.5"
+    "@uirouter/core" "5.0.10"
 
-"@uirouter/core@5.0.5", "@uirouter/core@^5.0.5":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.5.tgz#4fafae8b89e1bee321b0ed32e69ab66547c055c6"
+"@uirouter/core@5.0.10", "@uirouter/core@^5.0.10":
+  version "5.0.10"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.10.tgz#1a39eacbe33f3b44ab2c8fa4520cb1da92026cc3"
 
-"@uirouter/react@0.5.1-SNAPSHOT.20170711":
-  version "0.5.1-SNAPSHOT.20170711"
-  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.5.1-SNAPSHOT.20170711.tgz#fabfceaa52de5083043f50dbad138cdbf447e92e"
+"@uirouter/react@0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.5.3.tgz#a96b2c851ca518471f1bec32ff57a50025102337"
   dependencies:
-    "@uirouter/core" "^5.0.5"
+    "@uirouter/core" "5.0.10"
     classnames "^2.2.5"
 
 JSONStream@^1.0.4:
@@ -83,20 +77,7 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2react@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/angular2react/-/angular2react-2.0.3.tgz#3ac6bc8d3fdce900db8db6e644e4a623002d508b"
-  dependencies:
-    "@types/angular" ">=1.5.0"
-    "@types/react" "^15.0.22"
-    "@types/react-dom" "^15.5.0"
-    angular ">=1.5.0"
-    lodash.kebabcase "^4.1.1"
-    ngimport "^0.6.0"
-    react "^15.4.2"
-    react-dom "^15.4.2"
-
-angular@>=1.5.0, angular@~1.6.1:
+angular@~1.6.1:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.4.tgz#03b7b15c01a0802d7e2cf593240e604054dc77fb"
 
@@ -1218,10 +1199,6 @@ lodash._reinterpolate@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
 
-lodash.kebabcase@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
-
 lodash.template@^4.0.2:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
@@ -1362,14 +1339,6 @@ ms@0.7.3:
 nan@^2.3.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
-
-ngimport@^0.6.0:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/ngimport/-/ngimport-0.6.1.tgz#dfc4cdbb1b62e59d5a1e5f3526a4e268363d7c07"
-  dependencies:
-    "@types/angular" "^1.6.16"
-    "@types/angular-mocks" "^1.5.9"
-    angular ">=1.5.0"
 
 node-fetch@^1.0.1:
   version "1.7.1"
@@ -1642,7 +1611,7 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^15.4.2, react-dom@^15.5.4:
+react-dom@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
   dependencies:
@@ -1651,7 +1620,7 @@ react-dom@^15.4.2, react-dom@^15.5.4:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react@^15.4.2, react@^15.5.4:
+react@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
   dependencies:
