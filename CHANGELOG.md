@@ -1,3 +1,7 @@
+## 0.0.13 (2017-10-07)
+[Compare `@uirouter/react-hybrid` versions 0.0.12 and 0.0.13](https://github.com/ui-router/react-hybrid/compare/0.0.12...0.0.13)
+
+
 <a name="0.0.12"></a>
 ## [0.0.12](https://github.com/ui-router/react-hybrid/compare/0.0.11...0.0.12) (2017-07-14)
 
