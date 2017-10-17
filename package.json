@@ -1,6 +1,6 @@
 {
   "name": "@uirouter/react-hybrid",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "scripts": {
     "clean": "shx rm -rf lib lib-esm _bundles",
     "compile": "npm run clean && tsc && tsc --module es6 --outDir lib-esm",

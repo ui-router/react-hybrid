@@ -1,3 +1,22 @@
+## 0.0.14 (2017-10-17)
+[Compare `@uirouter/react-hybrid` versions 0.0.13 and 0.0.14](https://github.com/ui-router/react-hybrid/compare/0.0.13...0.0.14)
+
+
+### Updated `@uirouter/core` from 5.0.10 to 5.0.11
+[Compare `@uirouter/core` versions 5.0.10 and 5.0.11](https://github.com/ui-router/core/compare/5.0.10...5.0.11)
+
+### Bug Fixes
+
+* **ie9:** make console.bind work in ie9 ([#85](https://github.com/ui-router/core/issues/85)) ([318214b](https://github.com/ui-router/core/commit/318214b))
+
+
+### Updated `@uirouter/react` from 0.5.3 to 0.5.4
+[Compare `@uirouter/react` versions 0.5.3 and 0.5.4](https://github.com/ui-router/react/compare/0.5.3...0.5.4)
+
+
+### Updated `@uirouter/angularjs` from 1.0.8 to 1.0.9
+[Compare `@uirouter/angularjs` versions 1.0.8 and 1.0.9](https://github.com/angular-ui/ui-router/compare/1.0.8...1.0.9)
+
 ## 0.0.13 (2017-10-07)
 [Compare `@uirouter/react-hybrid` versions 0.0.12 and 0.0.13](https://github.com/ui-router/react-hybrid/compare/0.0.12...0.0.13)
 
