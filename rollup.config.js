@@ -50,9 +50,8 @@ function isExternal(id) {
     'angular',
   ];
 
-  let regexps = externals.map(e => [ 
+  let regexps = externals.map(e => [
     new RegExp(`^${e}$`),
-    // new RegExp(`commonjs-proxy.${e}$`),
     new RegExp(`node_modules/${e}`),
   ]).reduce((acc, a) => acc.concat(a), []);
 
