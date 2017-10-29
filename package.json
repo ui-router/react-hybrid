@@ -13,12 +13,9 @@
     "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs"
   },
   "license": "MIT",
-  "dependencies": {
-    "@uirouter/angularjs": "1.0.9",
-    "@uirouter/core": "5.0.11",
-    "@uirouter/react": "0.5.4"
-  },
   "peerDependencies": {
+    "@uirouter/angularjs": "1.0.9",
+    "@uirouter/react": "0.5.4",
     "angular": "^1.5.0",
     "react": "^15.0.0"
   },
@@ -27,10 +24,13 @@
     "@types/jquery": "^1.10.31",
     "@types/react": "^15.0.27",
     "@types/react-dom": "^15.5.0",
+    "@uirouter/angularjs": "1.0.9",
     "@uirouter/publish-scripts": "2.0.5",
+    "@uirouter/react": "0.5.4",
     "angular": "~1.6.1",
     "awesome-typescript-loader": "^3.0.0",
     "conventional-changelog": "^1.1.3",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "readline-sync": "^1.4.7",
@@ -45,7 +45,8 @@
     "shx": "^0.2.2",
     "typescript": "2.5.3",
     "watch": "^1.0.2",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "yalc": "^1.0.0-pre.12"
   },
   "main": "_bundles/ui-router-react-hybrid.js",
   "module": "lib-esm/index.js",
