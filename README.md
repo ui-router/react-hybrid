@@ -1,5 +1,7 @@
 # UI-Router react-hybrid
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ui-router/react-hybrid.svg)](https://greenkeeper.io/)
+
 ### UI-Router support for Hybrid Angular/React apps
 
 This package enables UI-Router to route to both AngularJS components (and/or templates) and React components.
