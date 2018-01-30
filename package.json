@@ -27,7 +27,7 @@
     "@types/jquery": "^1.10.31",
     "@types/react": "^15.0.27",
     "@types/react-dom": "^15.5.0",
-    "@uirouter/publish-scripts": "2.0.5",
+    "@uirouter/publish-scripts": "2.2.9",
     "angular": "~1.6.1",
     "awesome-typescript-loader": "^3.0.0",
     "conventional-changelog": "^1.1.3",
