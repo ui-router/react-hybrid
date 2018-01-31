@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import * as angular from 'angular';
 import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
 import { UIRouter } from '@uirouter/core';
@@ -21,14 +22,14 @@ export interface IUIRouterContextComponentState {
 export class UIRouterContextComponent extends React.Component<IUIRouterContextComponentProps, IUIRouterContextComponentState> {
   // context from parent react UIView
   public static contextTypes = {
-    router: React.PropTypes.object,
-    parentUIViewAddress: React.PropTypes.object,
+    router: PropTypes.object,
+    parentUIViewAddress: PropTypes.object,
   };
 
   // context to child
   public static childContextTypes = {
-    router: React.PropTypes.object,
-    parentUIViewAddress: React.PropTypes.object,
+    router: PropTypes.object,
+    parentUIViewAddress: PropTypes.object,
   };
 
   public static defaultProps: Partial<IUIRouterContextComponentProps> = {

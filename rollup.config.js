@@ -1,8 +1,6 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
-import progress from 'rollup-plugin-progress';
 import sourcemaps from 'rollup-plugin-sourcemaps';
-import visualizer from 'rollup-plugin-visualizer';
 import commonjs from 'rollup-plugin-commonjs';
 
 let MINIFY = process.env.MINIFY;
@@ -23,10 +21,8 @@ uglifyOpts.output.comments = (node, comment) =>
 
 let plugins = [
   nodeResolve({ jsnext: true }),
-  progress(),
   sourcemaps(),
   commonjs(),
-  visualizer({ sourcemap: true }),
 ];
 
 if (MINIFY) plugins.push(uglify(uglifyOpts));
@@ -47,10 +43,11 @@ function isExternal(id) {
     '@uirouter/react',
     'react',
     'react-dom',
+    'prop-types',
     'angular',
   ];
 
-  let regexps = externals.map(e => [ 
+  let regexps = externals.map(e => [
     new RegExp(`^${e}$`),
     // new RegExp(`commonjs-proxy.${e}$`),
     new RegExp(`node_modules/${e}`),
@@ -60,27 +57,29 @@ function isExternal(id) {
 }
 
 const CONFIG = {
-  moduleName: '@uirouter/react-hybrid',
-  entry: 'lib-esm/index.js',
-  dest: '_bundles/ui-router-react-hybrid' + extension,
+  input: 'lib-esm/index.js',
+  output: {
+    name: '@uirouter/react-hybrid',
+    file: '_bundles/ui-router-react-hybrid' + extension,
+    sourcemap: true,
+    format: 'umd',
+    banner: banner,
+    exports: 'named',
+    globals: {
+      '@uirouter/angularjs': '@uirouter/angularjs',
+      '@uirouter/react': '@uirouter/react',
+      '@uirouter/core': '@uirouter/core',
+      'angular': 'angular',
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+      'prop-types': 'PropTypes',
+    }
+  },
 
-  sourceMap: true,
-  format: 'umd',
-  exports: 'named',
   plugins: plugins,
-  banner: banner,
-
   onwarn: onwarn,
   external: isExternal,
 
-  globals: {
-    '@uirouter/angularjs': '@uirouter/angularjs',
-    '@uirouter/react': '@uirouter/react',
-    '@uirouter/core': '@uirouter/core',
-    'angular': 'angular',
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-  }
 };
 
 export default CONFIG;

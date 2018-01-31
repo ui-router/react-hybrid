@@ -60,9 +60,9 @@ hybridModule.directive('reactUiViewAdapter', function () {
       };
 
       function renderReactUIView() {
-        let uiView = React.createElement(UIView, { ...attrs, render, ref, wrap: false } as UIViewProps);
-        const reactEl = React.createElement(UIRouterContextComponent, { parentContextLevel: '3' }, uiView);
-        ReactDOM.render(reactEl, el, null);
+        const uiView = React.createElement(UIView, { ...attrs, render, ref, wrap: false } as UIViewProps);
+        const reactEl: React.ReactElement<any> = React.createElement(UIRouterContextComponent, { parentContextLevel: '3' }, uiView);
+        ReactDOM.render<any>(reactEl, el as any);
       }
 
       scope.$on('$destroy', () => {
