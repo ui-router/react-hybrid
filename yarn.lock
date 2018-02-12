@@ -14,15 +14,15 @@
   version "16.0.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.35.tgz#7ce8a83cad9690fd965551fc513217a74fc9e079"
 
-"@uirouter/angularjs@1.0.14":
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.14.tgz#00e6b4652d6df9a4fbdffff9c31e0d17b4841d78"
+"@uirouter/angularjs@1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.15.tgz#06d7a350576301f8897f5132b37e69756872139e"
   dependencies:
-    "@uirouter/core" "5.0.16"
+    "@uirouter/core" "5.0.17"
 
-"@uirouter/core@5.0.16":
-  version "5.0.16"
-  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.16.tgz#c6f9e2041df1b6ad3bc28b089e55241a1cb4610f"
+"@uirouter/core@5.0.17":
+  version "5.0.17"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.17.tgz#c85d422b1e9a45df885be8b84f9b7f53233a7973"
 
 "@uirouter/publish-scripts@2.2.10":
   version "2.2.10"
@@ -41,11 +41,11 @@
     tweak-sourcemap-paths "0.0.3"
     yargs "^9.0.1"
 
-"@uirouter/react@0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.6.1.tgz#49e8e88331894f84dd758d67005e8eeff585f097"
+"@uirouter/react@0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.6.2.tgz#cfedcba0e3aa134968689bae2045ce38b05a96ca"
   dependencies:
-    "@uirouter/core" "5.0.16"
+    "@uirouter/core" "5.0.17"
     classnames "2.2.5"
     prop-types "15.6.0"
 
