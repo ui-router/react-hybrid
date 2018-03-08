@@ -31,7 +31,7 @@ hybridModule.config([
 
       Object.keys(views).forEach(key => {
         const view = views[key];
-        const selfView = selfViews[key];
+        const selfView = selfViews[key || '$default'];
         const reactType = isReactComponent(view.component) && 'react';
         view.$type = selfViews[key].$type || reactType || view.$type;
       });
