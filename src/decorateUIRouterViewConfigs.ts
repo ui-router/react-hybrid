@@ -29,9 +29,10 @@ hybridModule.config(['$uiRouterProvider', (router: UIRouter) => {
 
     Object.keys(views).forEach(key => {
       const view = views[key];
-      const selfView = selfViews[key];
+      // Account for views: { "": { template... } }
+      const selfView = selfViews[key] || selfViews['$default'];
       const reactType = isReactComponent(view.component) && 'react';
-      view.$type = selfViews[key].$type || reactType || view.$type;
+      view.$type = selfView.$type || reactType || view.$type;
     });
 
     return views;
