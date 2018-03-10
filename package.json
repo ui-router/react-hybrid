@@ -32,7 +32,6 @@
     "angular": "1.6.8",
     "awesome-typescript-loader": "3.4.1",
     "conventional-changelog": "1.1.10",
-    "cypress": "^2.1.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "readline-sync": "1.4.7",
