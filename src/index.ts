@@ -2,7 +2,7 @@ import '@uirouter/angularjs';
 import '@uirouter/react';
 
 import './decorateUIRouterViewConfigs';
-import './angularjs/UIViewDecorator';
+import './angularjs/ReactUIViewAdapterComponent';
 import './react/UIViewMonkeyPatch';
 
 export * from './angularjs/module';
