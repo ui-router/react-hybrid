@@ -4,6 +4,8 @@ import * as angular from 'angular';
 import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
 import { UIRouter } from '@uirouter/core';
 
+import IInjectorService = angular.auto.IInjectorService;
+
 export interface IUIRouterContextComponentProps {
   parentContextLevel?: string;
 }
@@ -42,6 +44,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
   };
 
   private ref: HTMLElement;
+  private injector: IInjectorService;
 
   private getRouter() {
     // from react
@@ -50,7 +53,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
     }
 
     // from angular
-    return this.ref && angular.element(this.ref).injector().get('$uiRouter');
+    if (this.injector) return this.injector.get('$uiRouter');
   }
 
   private getParentView() {
@@ -86,6 +89,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
   private refCallback = (ref: HTMLElement) => {
     if (ref && ref !== this.ref) {
       this.ref = ref;
+      this.injector = angular.element(ref).injector();
       this.setState({});
       // Add $uiView data
     }
