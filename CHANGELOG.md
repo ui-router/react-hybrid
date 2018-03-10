@@ -1,3 +1,10 @@
+# 0.1.0 (2018-03-10)
+[Compare `@uirouter/react-hybrid` versions 0.0.16 and 0.1.0](https://github.com/ui-router/react-hybrid/compare/0.0.16...0.1.0)
+
+### Bug Fixes
+
+* **react-hybrid:** Fix errors surfaced by react 16 ([f61e241](https://github.com/ui-router/react-hybrid/commit/f61e241))
+
 ## 0.0.16 (2018-02-12)
 [Compare `@uirouter/react-hybrid` versions 0.0.15 and 0.0.16](https://github.com/ui-router/react-hybrid/compare/0.0.15...0.0.16)
 
