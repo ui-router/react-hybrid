@@ -1,7 +1,6 @@
 {
   "name": "ui-router-react-hybrid",
-  "description": "",
-  "homepage": "https://stackblitz.com/edit/ui-router-react-hybrid",
+  "description": "https://stackblitz.com/edit/ui-router-react-hybrid",
   "dependencies": {
     "@uirouter/react-hybrid": "latest",
     "@uirouter/visualizer": "5.0.6",
@@ -16,8 +15,19 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "run-s build e2e",
+    "test-ui": "run-s build e2e-ui",
+    "e2e": "run-p -r browser-sync cypress",
+    "e2e-ui": "run-p -r browser-sync cypress-ui",
+    "browser-sync": "browser-sync start --port 4000 --server build --no-open",
+    "cypress": "wait-on tcp:4000 && cypress run",
+    "cypress-ui": "wait-on tcp:4000 && cypress open"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "cypress": "^2.1.0",
+    "npm-run-all": "^4.1.2",
+    "wait-on": "^2.1.0"
+  }
 }
