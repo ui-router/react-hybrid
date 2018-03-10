@@ -9,6 +9,8 @@
     "fixmaps:bundle": "tweak_sourcemap_paths -a --include '_bundles/**/*.js.map'",
     "build": "run-s compile bundle fixmaps:*",
     "watch": "watch 'npm run build && yalc push' src",
+    "test": "true",
+    "test:downstream": "test_downstream_packages",
     "prepublishOnly": "npm run build",
     "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs"
   },
@@ -30,6 +32,7 @@
     "angular": "1.6.8",
     "awesome-typescript-loader": "3.4.1",
     "conventional-changelog": "1.1.10",
+    "cypress": "^2.1.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "readline-sync": "1.4.7",
