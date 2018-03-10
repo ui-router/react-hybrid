@@ -1,0 +1,23 @@
+{
+  "name": "ui-router-react-hybrid",
+  "description": "",
+  "homepage": "https://stackblitz.com/edit/ui-router-react-hybrid",
+  "dependencies": {
+    "@uirouter/react-hybrid": "latest",
+    "@uirouter/visualizer": "5.0.6",
+    "angular": "1.6.9",
+    "prop-types": "15.6.0",
+    "react": "^15",
+    "react-dom": "^15",
+    "react-scripts": "1.0.10"
+  },
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {}
+}
