@@ -3,12 +3,12 @@
   "description": "https://stackblitz.com/edit/ui-router-react-hybrid",
   "dependencies": {
     "@uirouter/react-hybrid": "latest",
-    "@uirouter/visualizer": "5.0.6",
+    "@uirouter/visualizer": "6.0.0",
     "angular": "1.6.9",
-    "prop-types": "15.6.0",
-    "react": "^15",
-    "react-dom": "^15",
-    "react-scripts": "1.0.10"
+    "prop-types": "15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
   },
   "version": "0.1.0",
   "private": true,
