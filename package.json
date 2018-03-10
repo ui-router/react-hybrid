@@ -10,7 +10,7 @@
     "build": "run-s compile bundle fixmaps:*",
     "watch": "watch 'npm run build && yalc push' src",
     "test": "npm run build",
-    "test:downstream": "test_downstream_packages",
+    "test:downstream": "test_downstream_projects",
     "prepublishOnly": "npm run build",
     "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs"
   },
