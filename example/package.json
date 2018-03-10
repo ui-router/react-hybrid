@@ -2,7 +2,7 @@
   "name": "ui-router-react-hybrid",
   "description": "https://stackblitz.com/edit/ui-router-react-hybrid",
   "dependencies": {
-    "@uirouter/react-hybrid": "latest",
+    "@uirouter/react-hybrid": "0.1.0",
     "@uirouter/visualizer": "6.0.0",
     "angular": "1.6.9",
     "prop-types": "15.6.1",

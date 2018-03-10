@@ -1,19 +1,8 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-
 import angular from 'angular';
 import { UI_ROUTER_REACT_HYBRID } from '@uirouter/react-hybrid';
-
 import { Visualizer } from '@uirouter/visualizer';
-import { UIRouterReact, UIRouter, pushStateLocationPlugin } from '@uirouter/react';
-import { UIView, UISref, UISrefActive } from '@uirouter/react';
 import { ReactComponent } from './ReactComponent';
 import './style.css';
-
-const plugins = [
-  pushStateLocationPlugin,
-  Visualizer,
-]
 
 const states = [
   { name: 'react', url: '/react', component: ReactComponent },
