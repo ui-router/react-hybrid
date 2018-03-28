@@ -16,18 +16,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "run-s build e2e",
-    "test-ui": "run-s build e2e-ui",
-    "e2e": "run-p -r browser-sync cypress",
-    "e2e-ui": "run-p -r browser-sync cypress-ui",
-    "browser-sync": "browser-sync start --port 4000 --server build --no-open",
-    "cypress": "wait-on tcp:4000 && cypress run",
-    "cypress-ui": "wait-on tcp:4000 && cypress open"
+    "test": "npm run build && cypress-runner run --path build",
+    "test:open": "npm run build && cypress-runner open --path build"
   },
   "devDependencies": {
-    "browser-sync": "^2.23.6",
-    "cypress": "^2.1.0",
-    "npm-run-all": "^4.1.2",
-    "wait-on": "^2.1.0"
+    "@uirouter/cypress-runner": "^1.0.1"
   }
 }
