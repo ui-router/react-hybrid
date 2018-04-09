@@ -2,7 +2,6 @@ import * as React from 'react';
 import { UIView } from '@uirouter/react';
 import { AngularUIView } from './AngularUIView';
 
-
 /**
  * Monkey patches the @uirouter/react UIView such that:
  *
@@ -28,7 +27,7 @@ UIView.prototype.render = function() {
     return realRender.apply(this, arguments);
   }
 
-  return <AngularUIView { ...this.props } />;
+  return <AngularUIView {...this.props} />;
 };
 
 UIView.prototype.componentWillMount = function() {

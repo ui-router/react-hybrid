@@ -7,16 +7,16 @@ import { filter } from '@uirouter/core';
 import { UIRouterContextComponent } from '../react/UIRouterReactContext';
 
 // When an angularjs `ui-view` is instantiated, also create an adapter (which creates a react UIView)
-hybridModule.directive('uiView', function () {
+hybridModule.directive('uiView', function() {
   return {
     restrict: 'AE',
-    compile: function (tElem, tAttrs) {
+    compile: function(tElem, tAttrs) {
       let { name, uiView } = tAttrs;
       name = name || uiView || '$default';
       // console.log('Creating react-ui-view-adapter', tElem);
       tElem.html(`<react-ui-view-adapter name="${name}"></react-ui-view-adapter>`);
-    }
-  }
+    },
+  };
 });
 
 var id = 0;
@@ -24,19 +24,19 @@ var id = 0;
 // This angularjs adapter (inside an angularjs ui-view) creates the react UIView and provides it the correct context
 // It also allows angularjs children created inside the react view (via angular2react or whatever) to access the correct
 // context from the react UIView
-hybridModule.directive('reactUiViewAdapter', function () {
+hybridModule.directive('reactUiViewAdapter', function() {
   return {
     restrict: 'E',
-    link: function (scope, elem, attrs) {
+    link: function(scope, elem, attrs) {
       const el = elem[0];
       let _ref = null;
       let destroyed = false;
-      const $id = id++;      
+      const $id = id++;
       const ignoredAttrKeys = ['$$element', '$attr'];
       attrs = filter(attrs, (val, key) => ignoredAttrKeys.indexOf(key) === -1) as any;
 
       // console.log(`${$id}: linking react-ui-view-adapter into `, el, attrs)
-      
+
       const log = (msg, UIViewRef) => {
         const id = UIViewRef && UIViewRef.state && UIViewRef.state.id;
         const cmp = UIViewRef && UIViewRef.componentInstance;
@@ -82,7 +82,7 @@ hybridModule.directive('reactUiViewAdapter', function () {
 
         const props = { ...attrs, render, wrap: false, refFn: ref };
         // console.log(`${$id}: rendering ReactUIView with props`, props);
-        ReactDOM.render<any>(<ReactUIView {...props}/>, el as any);
+        ReactDOM.render<any>(<ReactUIView {...props} />, el as any);
       }
 
       scope.$on('$destroy', () => {
@@ -93,12 +93,12 @@ hybridModule.directive('reactUiViewAdapter', function () {
       });
 
       renderReactUIView();
-    }
+    },
   };
 });
 
 const ReactUIView = ({ refFn, ...props }) => (
-    <UIRouterContextComponent parentContextLevel="3">
-      <UIView {...props} ref={refFn}/>
-    </UIRouterContextComponent>
+  <UIRouterContextComponent parentContextLevel="3">
+    <UIView {...props} ref={refFn} />
+  </UIRouterContextComponent>
 );

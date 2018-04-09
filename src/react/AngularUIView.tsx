@@ -2,11 +2,14 @@ import { hybridModule } from '../angularjs/module';
 import * as React from 'react';
 
 let $injector, $rootScope, $compile;
-hybridModule.run(['$injector', _$injector_ => {
-  $injector = _$injector_;
-  $rootScope = _$injector_.get('$rootScope');
-  $compile = _$injector_.get('$compile');
-}]);
+hybridModule.run([
+  '$injector',
+  _$injector_ => {
+    $injector = _$injector_;
+    $rootScope = _$injector_.get('$rootScope');
+    $compile = _$injector_.get('$compile');
+  },
+]);
 
 /**
  * A React component which renders an AngularJS <ui-view>
@@ -17,8 +20,8 @@ export class AngularUIView extends React.Component<any, any> {
     super(props);
 
     this.state = {
-      $scope: $rootScope.$new()
-    }
+      $scope: $rootScope.$new(),
+    };
   }
 
   render() {
