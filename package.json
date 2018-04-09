@@ -12,7 +12,8 @@
     "test": "npm run build",
     "test:downstream": "test_downstream_projects",
     "prepublishOnly": "npm run build",
-    "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs"
+    "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs",
+    "precommit": "pretty-quick --staged"
   },
   "license": "MIT",
   "dependencies": {
@@ -32,6 +33,9 @@
     "angular": "1.6.8",
     "awesome-typescript-loader": "3.4.1",
     "conventional-changelog": "1.1.10",
+    "husky": "^0.14.3",
+    "prettier": "^1.11.1",
+    "pretty-quick": "^1.4.1",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "readline-sync": "1.4.7",
