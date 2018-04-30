@@ -20,6 +20,6 @@
     "test:open": "npm run build && cypress-runner open --path build"
   },
   "devDependencies": {
-    "@uirouter/cypress-runner": "^1.0.1"
+    "@uirouter/cypress-runner": "^1.0.7"
   }
 }
