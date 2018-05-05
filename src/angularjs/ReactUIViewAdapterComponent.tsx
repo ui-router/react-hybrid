@@ -5,6 +5,7 @@ import { hybridModule } from './module';
 import { UIView, UIViewProps } from '@uirouter/react';
 import { filter } from '@uirouter/core';
 import { UIRouterContextComponent } from '../react/UIRouterReactContext';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 // When an angularjs `ui-view` is instantiated, also create an adapter (which creates a react UIView)
 hybridModule.directive('uiView', function() {
@@ -99,6 +100,8 @@ hybridModule.directive('reactUiViewAdapter', function() {
 
 const ReactUIView = ({ refFn, ...props }) => (
   <UIRouterContextComponent parentContextLevel="3">
-    <UIView {...props} ref={refFn} />
+    <ErrorBoundary>
+      <UIView {...props} ref={refFn} />
+    </ErrorBoundary>
   </UIRouterContextComponent>
 );
