@@ -1,0 +1,38 @@
+h1, p {
+  font-family: Lato;
+}
+
+.active {
+  font-weight: bold;
+}
+
+a + a {
+  margin-left: 0.25em;
+}
+
+ui-view:before,react-ui-view-adapter:before {
+  position: relative;
+  left: -12px;
+  top: -12px;
+}
+
+ui-view {
+  border: 1px solid red;
+  display: block;
+  padding: 1em;
+}
+
+ui-view:before {
+  content: 'ui-view';
+}
+
+
+react-ui-view-adapter {
+  border: 1px solid blue;
+  display: block;
+  padding: 1em;
+}
+
+react-ui-view-adapter:before {
+  content: 'react-ui-view-adapter';
+}

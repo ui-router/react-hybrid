@@ -1,0 +1,25 @@
+{
+  "name": "ui-router-react-hybrid",
+  "description": "https://stackblitz.com/edit/ui-router-react-hybrid",
+  "dependencies": {
+    "@uirouter/react-hybrid": "0.1.0",
+    "@uirouter/visualizer": "6.0.0",
+    "angular": "1.6.9",
+    "prop-types": "15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "npm run build && cypress-runner run --path build",
+    "test:open": "npm run build && cypress-runner open --path build"
+  },
+  "devDependencies": {
+    "@uirouter/cypress-runner": "^1.0.7"
+  }
+}

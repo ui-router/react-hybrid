@@ -4,6 +4,8 @@ import * as angular from 'angular';
 import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
 import { UIRouter } from '@uirouter/core';
 
+import IInjectorService = angular.auto.IInjectorService;
+
 export interface IUIRouterContextComponentProps {
   parentContextLevel?: string;
 }
@@ -19,7 +21,10 @@ export interface IUIRouterContextComponentState {
  * Gets the context from the parent react UIView (if component tree is all react)
  * Gets the context from the from parent angular ui-view if no parent reat UIView is available
  */
-export class UIRouterContextComponent extends React.Component<IUIRouterContextComponentProps, IUIRouterContextComponentState> {
+export class UIRouterContextComponent extends React.Component<
+  IUIRouterContextComponentProps,
+  IUIRouterContextComponentState
+> {
   // context from parent react UIView
   public static contextTypes = {
     router: PropTypes.object,
@@ -33,7 +38,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
   };
 
   public static defaultProps: Partial<IUIRouterContextComponentProps> = {
-    parentContextLevel: "0",
+    parentContextLevel: '0',
   };
 
   public state: IUIRouterContextComponentState = {
@@ -42,6 +47,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
   };
 
   private ref: HTMLElement;
+  private injector: IInjectorService;
 
   private getRouter() {
     // from react
@@ -50,7 +56,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
     }
 
     // from angular
-    return this.ref && angular.element(this.ref).injector().get('$uiRouter');
+    if (this.injector) return this.injector.get('$uiRouter');
   }
 
   private getParentView() {
@@ -86,19 +92,20 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
   private refCallback = (ref: HTMLElement) => {
     if (ref && ref !== this.ref) {
       this.ref = ref;
+      this.injector = angular.element(ref).injector();
       this.setState({});
       // Add $uiView data
     }
   };
 
   public render() {
-    const { router  } = this.state;
-    const { children  } = this.props;
+    const { router } = this.state;
+    const { children } = this.props;
 
     const ready = !!router;
     const childrenCount = React.Children.count(children);
     const child = ready && (childrenCount === 1 ? React.Children.only(children) : <div>{children}</div>);
-    return (this.ref ? child : <div ref={this.refCallback} />);
+    return this.ref ? child : <div ref={this.refCallback} />;
   }
 }
 
@@ -108,7 +115,7 @@ export class UIRouterContextComponent extends React.Component<IUIRouterContextCo
  */
 class ParentUIViewAddressAdapter {
   constructor(private _ngdata: UIViewData) {
-    if (!_ngdata) throw new Error("@uirouter/react-hybrid: Address Adapter created with no _ngdata parameter.")
+    if (!_ngdata) throw new Error('@uirouter/react-hybrid: Address Adapter created with no _ngdata parameter.');
   }
 
   public get fqn() {
@@ -118,7 +125,9 @@ class ParentUIViewAddressAdapter {
   public get context() {
     if (!this._ngdata || !this._ngdata.$cfg || !this._ngdata.$cfg.viewDecl) {
       console.log(this._ngdata);
-      throw new Error("@uirouter/react-hybrid: Uh oh. Views are in an invalid state. Parent UIView has no $cfg or viewDecl");
+      throw new Error(
+        '@uirouter/react-hybrid: Uh oh. Views are in an invalid state. Parent UIView has no $cfg or viewDecl',
+      );
     }
 
     return this._ngdata.$cfg.viewDecl.$context || this._ngdata.$uiView.creationContext;

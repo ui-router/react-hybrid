@@ -6,8 +6,7 @@ import commonjs from 'rollup-plugin-commonjs';
 let MINIFY = process.env.MINIFY;
 
 let pkg = require('./package.json');
-let banner =
-`/**
+let banner = `/**
  * ${pkg.description}
  * @version v${pkg.version}
  * @link ${pkg.homepage}
@@ -16,14 +15,9 @@ let banner =
 
 let uglifyOpts = { output: {} };
 // retain multiline comment with @license
-uglifyOpts.output.comments = (node, comment) =>
-    comment.type === 'comment2' && /@license/i.test(comment.value);
+uglifyOpts.output.comments = (node, comment) => comment.type === 'comment2' && /@license/i.test(comment.value);
 
-let plugins = [
-  nodeResolve({ jsnext: true }),
-  sourcemaps(),
-  commonjs(),
-];
+let plugins = [nodeResolve({ jsnext: true }), sourcemaps(), commonjs()];
 
 if (MINIFY) plugins.push(uglify(uglifyOpts));
 
@@ -47,11 +41,13 @@ function isExternal(id) {
     'angular',
   ];
 
-  let regexps = externals.map(e => [
-    new RegExp(`^${e}$`),
-    // new RegExp(`commonjs-proxy.${e}$`),
-    new RegExp(`node_modules/${e}`),
-  ]).reduce((acc, a) => acc.concat(a), []);
+  let regexps = externals
+    .map(e => [
+      new RegExp(`^${e}$`),
+      // new RegExp(`commonjs-proxy.${e}$`),
+      new RegExp(`node_modules/${e}`),
+    ])
+    .reduce((acc, a) => acc.concat(a), []);
 
   return regexps.map(regex => regex.exec(id)).reduce((acc, val) => acc || !!val, false);
 }
@@ -69,17 +65,16 @@ const CONFIG = {
       '@uirouter/angularjs': '@uirouter/angularjs',
       '@uirouter/react': '@uirouter/react',
       '@uirouter/core': '@uirouter/core',
-      'angular': 'angular',
-      'react': 'React',
+      angular: 'angular',
+      react: 'React',
       'react-dom': 'ReactDOM',
       'prop-types': 'PropTypes',
-    }
+    },
   },
 
   plugins: plugins,
   onwarn: onwarn,
   external: isExternal,
-
 };
 
 export default CONFIG;

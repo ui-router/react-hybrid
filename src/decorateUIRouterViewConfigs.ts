@@ -9,7 +9,6 @@ import { ReactViewConfig, ReactViewDeclaration } from '@uirouter/react';
  * Decorates the `views: {}` registered on states.
  * Detects if a `component:` is a React Component and sets `view.$type = 'react'` if so
  */
-
 hybridModule.config(['$uiRouterProvider', (router: UIRouter) => {
   const factory = (path: [PathNode], config: ReactViewDeclaration) =>
       new ReactViewConfig(path, config);
@@ -30,12 +29,10 @@ hybridModule.config(['$uiRouterProvider', (router: UIRouter) => {
     Object.keys(views).forEach(key => {
       const view = views[key];
       // Account for views: { "": { template... } }
-      const selfView = selfViews[key] || selfViews['$default'];
+      const selfView = selfViews[key || '$default'];
       const reactType = isReactComponent(view.component) && 'react';
       view.$type = selfView.$type || reactType || view.$type;
+
     });
-
-    return views;
-  });
-}]);
-
+  },
+]);
