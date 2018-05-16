@@ -126,7 +126,7 @@ class ParentUIViewAddressAdapter {
     if (!this._ngdata || !this._ngdata.$cfg || !this._ngdata.$cfg.viewDecl) {
       console.log(this._ngdata);
       throw new Error(
-        '@uirouter/react-hybrid: Uh oh. Views are in an invalid state. Parent UIView has no $cfg or viewDecl',
+        '@uirouter/react-hybrid: Uh oh. Views are in an invalid state. Parent UIView has no $cfg or viewDecl'
       );
     }
 
