@@ -79,6 +79,10 @@
   version "5.0.18"
   resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.18.tgz#6dd85654ebc7e25eba2c1b32f069829db351abab"
 
+"@uirouter/core@5.0.19":
+  version "5.0.19"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.19.tgz#fe2888190393a8c92584c354e65ab8322c1b0db4"
+
 "@uirouter/publish-scripts@^2.2.10":
   version "2.3.15"
   resolved "https://registry.yarnpkg.com/@uirouter/publish-scripts/-/publish-scripts-2.3.15.tgz#41c4d0955c59e4e9de34c68ccbeb16891eb38677"
@@ -104,11 +108,11 @@
     yalc "^1.0.0-pre.21"
     yargs "^11.0.0"
 
-"@uirouter/react@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.7.0.tgz#3a98857bd5de1a19b6a551d74e8dd10cd7dc99e5"
+"@uirouter/react@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.8.0.tgz#67b5c8fac16649ab2bd61b55cc087071c594cbe2"
   dependencies:
-    "@uirouter/core" "5.0.18"
+    "@uirouter/core" "5.0.19"
     classnames "^2.2.5"
     prop-types "^15.6.1"
 
@@ -941,10 +945,10 @@ husky@^0.14.3:
     strip-indent "^2.0.0"
 
 iconv-lite@~0.4.13:
-  version "0.4.21"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.21.tgz#c47f8733d02171189ebc4a400f3218d348094798"
+  version "0.4.23"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
-    safer-buffer "^2.1.0"
+    safer-buffer ">= 2.1.2 < 3"
 
 ignore@^3.2.7:
   version "3.3.8"
@@ -1931,7 +1935,7 @@ safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
 
-safer-buffer@^2.1.0:
+"safer-buffer@>= 2.1.2 < 3":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
@@ -2229,8 +2233,8 @@ typescript@^2.8.1:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.3.tgz#5d817f9b6f31bb871835f4edf0089f21abe6c170"
 
 ua-parser-js@^0.7.9:
-  version "0.7.17"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.17.tgz#e9ec5f9498b9ec910e7ae3ac626a805c4d09ecac"
+  version "0.7.18"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.18.tgz#a7bfd92f56edfb117083b69e31d2aa8882d4b1ed"
 
 uglify-es@^3.3.7:
   version "3.3.9"
