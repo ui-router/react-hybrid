@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as angular from 'angular';
 import * as ReactDOM from 'react-dom';
 import { hybridModule } from './module';
-import { UIView, UIViewProps } from '@uirouter/react';
+import { UIView, UIViewProps, UIRouterConsumer, UIViewConsumer } from '@uirouter/react';
 import { filter } from '@uirouter/core';
 import { UIRouterContextComponent } from '../react/UIRouterReactContext';
 
-// When an angularjs `ui-view` is instantiated, also create an adapter (which creates a react UIView)
+// When an angularjs `ui-view` is instantiated, also create an react-ui-view-adapter (which creates a react UIView)
 hybridModule.directive('uiView', function() {
   return {
     restrict: 'AE',
@@ -66,6 +66,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
       const provideContextToAngularJSChildren = () => {
         const $cfg = _ref && _ref.uiViewData && _ref.uiViewData.config;
         const $uiView = _ref && _ref.uiViewAddress;
+        // console.log(`${$id}: providing context to angularjs children`, el, $cfg, $uiView);
         if (!$cfg || !$uiView) {
           elem.removeData('$uiView');
         } else {
@@ -97,8 +98,16 @@ hybridModule.directive('reactUiViewAdapter', function() {
   };
 });
 
+const InternalUIView = UIView.__internalViewComponent;
+
 const ReactUIView = ({ refFn, ...props }) => (
   <UIRouterContextComponent parentContextLevel="3">
-    <UIView {...props} ref={refFn} />
+    <UIRouterConsumer>
+      {router => (
+        <UIViewConsumer>
+          {parentUiView => <InternalUIView {...props} ref={refFn} parentUIView={parentUiView} router={router} />}
+        </UIViewConsumer>
+      )}
+    </UIRouterConsumer>
   </UIRouterContextComponent>
 );

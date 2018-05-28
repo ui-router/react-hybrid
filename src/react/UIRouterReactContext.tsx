@@ -1,9 +1,8 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import * as angular from 'angular';
 import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
-import { UIRouter } from '@uirouter/core';
-
+import { UIRouterConsumer, UIRouterProvider, UIRouterReact, UIViewConsumer, UIViewProvider } from '@uirouter/react';
+import * as angular from 'angular';
+import * as React from 'react';
+import { ReactElement } from 'react';
 import IInjectorService = angular.auto.IInjectorService;
 
 export interface IUIRouterContextComponentProps {
@@ -11,8 +10,9 @@ export interface IUIRouterContextComponentProps {
 }
 
 export interface IUIRouterContextComponentState {
-  router: UIRouter;
-  parentUIViewAddress: any;
+  ready: boolean;
+  router?: UIRouterReact;
+  parentUIViewAddress?: any;
 }
 
 /**
@@ -25,23 +25,12 @@ export class UIRouterContextComponent extends React.Component<
   IUIRouterContextComponentProps,
   IUIRouterContextComponentState
 > {
-  // context from parent react UIView
-  public static contextTypes = {
-    router: PropTypes.object,
-    parentUIViewAddress: PropTypes.object,
-  };
-
-  // context to child
-  public static childContextTypes = {
-    router: PropTypes.object,
-    parentUIViewAddress: PropTypes.object,
-  };
-
   public static defaultProps: Partial<IUIRouterContextComponentProps> = {
     parentContextLevel: '0',
   };
 
   public state: IUIRouterContextComponentState = {
+    ready: false,
     router: null,
     parentUIViewAddress: null,
   };
@@ -49,43 +38,23 @@ export class UIRouterContextComponent extends React.Component<
   private ref: HTMLElement;
   private injector: IInjectorService;
 
-  private getRouter() {
-    // from react
-    if (this.context.router) {
-      return this.context.router;
-    }
-
-    // from angular
+  private getRouterFromAngularJS(): UIRouterReact {
     if (this.injector) return this.injector.get('$uiRouter');
   }
 
-  private getParentView() {
-    // from react
-    if (this.context.parentUIViewAddress) {
-      return this.context.parentUIViewAddress;
-    }
-
-    // from angular
+  private getParentViewFromAngularJS() {
     let ref = this.ref;
     let steps = parseInt(this.props.parentContextLevel);
     steps = isNaN(steps) ? 0 : steps;
 
-    while (steps--) ref = ref.parentElement;
+    while (ref && steps--) ref = ref.parentElement;
     const $uiView = ref && angular.element(ref).inheritedData('$uiView');
-    return $uiView && $uiView && new ParentUIViewAddressAdapter($uiView);
-  }
-
-  public getChildContext() {
-    return {
-      router: this.state.router,
-      parentUIViewAddress: this.state.parentUIViewAddress,
-    };
+    return $uiView && new ParentUIViewAddressAdapter($uiView);
   }
 
   public componentDidMount() {
     this.setState({
-      router: this.getRouter(),
-      parentUIViewAddress: this.getParentView(),
+      parentUIViewAddress: this.getParentViewFromAngularJS(),
     });
   }
 
@@ -93,19 +62,42 @@ export class UIRouterContextComponent extends React.Component<
     if (ref && ref !== this.ref) {
       this.ref = ref;
       this.injector = angular.element(ref).injector();
-      this.setState({});
-      // Add $uiView data
+      const router = this.getRouterFromAngularJS();
+      const parentUIViewAddress = this.getParentViewFromAngularJS();
+      this.setState({ ready: true, router, parentUIViewAddress });
+      // console.log(ref);
     }
   };
 
+  private renderChild(child: ReactElement<any>) {
+    // console.log('renderChild()', child);
+    return (
+      <UIRouterConsumer>
+        {routerFromReactContext => (
+          <UIRouterProvider value={routerFromReactContext || this.state.router}>
+            <UIViewConsumer>
+              {parentUIViewFromReactContext => (
+                <UIViewProvider value={parentUIViewFromReactContext || this.state.parentUIViewAddress}>
+                  {child}
+                </UIViewProvider>
+              )}
+            </UIViewConsumer>
+          </UIRouterProvider>
+        )}
+      </UIRouterConsumer>
+    );
+  }
+
   public render() {
-    const { router } = this.state;
+    const { ready } = this.state;
     const { children } = this.props;
 
-    const ready = !!router;
     const childrenCount = React.Children.count(children);
-    const child = ready && (childrenCount === 1 ? React.Children.only(children) : <div>{children}</div>);
-    return this.ref ? child : <div ref={this.refCallback} />;
+    if (!ready) {
+      return <div ref={this.refCallback} />;
+    }
+
+    return this.renderChild(childrenCount === 1 ? React.Children.only(children) : <div>{children}</div>);
   }
 }
 
