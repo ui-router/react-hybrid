@@ -1,3 +1,57 @@
+# 0.3.0 (2018-05-28)
+[Compare `@uirouter/react-hybrid` versions 0.2.0 and 0.3.0](https://github.com/ui-router/react-hybrid/compare/0.2.0...0.3.0)
+
+### Bug Fixes
+
+* **decorateUIRouterViewConfigs:** fix issue with key =  but selfView def is '' ([3579894](https://github.com/ui-router/react-hybrid/commit/3579894)), closes [#10](https://github.com/ui-router/react-hybrid/issues/10)
+
+
+### Features
+
+* Support UI-Router 0.8.2 and switch to React 16.3 context API ([09af7b6](https://github.com/ui-router/react-hybrid/commit/09af7b6))
+
+
+### BREAKING CHANGES
+
+* This version of react-hybrid requires `@uirouter/react` version 0.8.2 or higher and requires React 16.3.x or higher.
+
+
+### Updated `@uirouter/core` from 5.0.18 to 5.0.19
+[Compare `@uirouter/core` versions 5.0.18 and 5.0.19](https://github.com/ui-router/core/compare/5.0.18...5.0.19)
+
+### Bug Fixes
+
+* **enums:** Workaround angular compiler export issue https://github.com/angular/angular/issues/23759 ([38d25fa](https://github.com/ui-router/core/commit/38d25fa))
+
+
+### Updated `@uirouter/react` from 0.7.0 to 0.8.2
+[Compare `@uirouter/react` versions 0.7.0 and 0.8.2](https://github.com/ui-router/react/compare/0.7.0...0.8.2)
+
+### Bug Fixes
+
+* **enzyme:** fix enzyme patch leaving a file called '-' ([4c2157c](https://github.com/ui-router/react/commit/4c2157c))
+* **UISref/UISrefActive:** make proptypes non-required: parentUIView, addStateInfoToParentActive ([c7aa299](https://github.com/ui-router/react/commit/c7aa299)), closes [#173](https://github.com/ui-router/react/issues/173)
+
+
+### Features
+
+* **internal:** Change UIView from arrow to Component Class ([ce2bc1e](https://github.com/ui-router/react/commit/ce2bc1e))
+* **internal:** exposed the internal View component for use by [@uirouter](https://github.com/uirouter)/react-hybrid ([9c07226](https://github.com/ui-router/react/commit/9c07226))
+* **UIView:** force component re-mount on reload() ([d01162a](https://github.com/ui-router/react/commit/d01162a)), closes [#172](https://github.com/ui-router/react/issues/172)
+
+
+### BREAKING CHANGES
+
+* **UIView:** when a state is entered/exited the State Component is remounted, re-running its lifecycle methods.
+
+
+### Updated `@uirouter/angularjs` from 1.0.16 to 1.0.18
+[Compare `@uirouter/angularjs` versions 1.0.16 and 1.0.18](https://github.com/angular-ui/ui-router/compare/1.0.16...1.0.18)
+
+### Bug Fixes
+
+* **bundles:** Do not run prettier against release/* bundles when publishing to bower ([9b420fa](https://github.com/angular-ui/ui-router/commit/9b420fa))
+
 # 0.2.0 (2018-05-05)
 [Compare `@uirouter/react-hybrid` versions 0.1.0 and 0.2.0](https://github.com/ui-router/react-hybrid/compare/0.1.0...0.2.0)
 
