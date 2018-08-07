@@ -1,3 +1,20 @@
+## 0.3.2 (2018-08-07)
+[Compare `@uirouter/react-hybrid` versions 0.3.1 and 0.3.2](https://github.com/ui-router/react-hybrid/compare/0.3.1...0.3.2)
+
+
+### Updated `@uirouter/react` from 0.8.3 to 0.8.4
+[Compare `@uirouter/react` versions 0.8.3 and 0.8.4](https://github.com/ui-router/react/compare/0.8.3...0.8.4)
+
+### Bug Fixes
+
+* **uiview:** Fix uiCanExit when routing to a React.forwardRef() ([cf5c668](https://github.com/ui-router/react/commit/cf5c668))
+
+
+### Features
+
+* **UISrefActive:** pass down className ([fbb8152](https://github.com/ui-router/react/commit/fbb8152))
+* **UISrefActive:** support for nested UISrefActive ([49e32e6](https://github.com/ui-router/react/commit/49e32e6))
+
 ## 0.3.1 (2018-07-20)
 [Compare `@uirouter/react-hybrid` versions 0.3.0 and 0.3.1](https://github.com/ui-router/react-hybrid/compare/0.3.0...0.3.1)
 
