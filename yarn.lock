@@ -125,9 +125,9 @@
     yalc "^1.0.0-pre.22"
     yargs "^12.0.1"
 
-"@uirouter/react@0.8.4":
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.8.4.tgz#ffd6fbe59d336f1a2cbab7c927ad7337669fb67b"
+"@uirouter/react@0.8.5":
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.8.5.tgz#7328985e1abfb60921b1535e636349eeb0bdb085"
   dependencies:
     "@uirouter/core" "5.0.20"
     classnames "^2.2.5"
