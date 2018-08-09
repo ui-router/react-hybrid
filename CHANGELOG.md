@@ -1,3 +1,14 @@
+## 0.3.3 (2018-08-09)
+[Compare `@uirouter/react-hybrid` versions 0.3.2 and 0.3.3](https://github.com/ui-router/react-hybrid/compare/0.3.2...0.3.3)
+
+
+### Updated `@uirouter/react` from 0.8.4 to 0.8.5
+[Compare `@uirouter/react` versions 0.8.4 and 0.8.5](https://github.com/ui-router/react/compare/0.8.4...0.8.5)
+
+### Features
+
+* **UISref:** Call child element's onClick prop first, if it exists ([095a90d](https://github.com/ui-router/react/commit/095a90d)), closes [#240](https://github.com/ui-router/react/issues/240)
+
 ## 0.3.2 (2018-08-07)
 [Compare `@uirouter/react-hybrid` versions 0.3.1 and 0.3.2](https://github.com/ui-router/react-hybrid/compare/0.3.1...0.3.2)
 
