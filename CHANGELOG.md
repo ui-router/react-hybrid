@@ -1,3 +1,23 @@
+## 0.3.4 (2018-08-12)
+[Compare `@uirouter/react-hybrid` versions 0.3.3 and 0.3.4](https://github.com/ui-router/react-hybrid/compare/0.3.3...0.3.4)
+
+
+### Updated `@uirouter/core` from 5.0.20 to 5.0.21
+[Compare `@uirouter/core` versions 5.0.20 and 5.0.21](https://github.com/ui-router/core/compare/5.0.20...5.0.21)
+
+### Bug Fixes
+
+* **dynamic:** Use 'find' from common.ts instead of Array.prototype.find ([66a3244](https://github.com/ui-router/core/commit/66a3244)), closes [#215](https://github.com/ui-router/core/issues/215)
+* **url:** When using html5Mode and no <base> tag is present, default to '/' ([23742e3](https://github.com/ui-router/core/commit/23742e3)), closes [#223](https://github.com/ui-router/core/issues/223)
+
+
+### Updated `@uirouter/react` from 0.8.5 to 0.8.7
+[Compare `@uirouter/react` versions 0.8.5 and 0.8.7](https://github.com/ui-router/react/compare/0.8.5...0.8.7)
+
+
+### Updated `@uirouter/angularjs` from 1.0.19 to 1.0.20
+[Compare `@uirouter/angularjs` versions 1.0.19 and 1.0.20](https://github.com/angular-ui/ui-router/compare/1.0.19...1.0.20)
+
 ## 0.3.3 (2018-08-09)
 [Compare `@uirouter/react-hybrid` versions 0.3.2 and 0.3.3](https://github.com/ui-router/react-hybrid/compare/0.3.2...0.3.3)
 
