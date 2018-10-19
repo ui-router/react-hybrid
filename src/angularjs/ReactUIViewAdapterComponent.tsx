@@ -90,7 +90,8 @@ hybridModule.directive('reactUiViewAdapter', function() {
         destroyed = true;
         const unmounted = ReactDOM.unmountComponentAtNode(el);
         // console.log(`${$id}: angular $destroy event -- unmountComponentAtNode(): ${unmounted}`, el);
-        el.remove();
+        // Remove using jQLite element for cross-browser compatibility.
+        elem.remove();
       });
 
       renderReactUIView();
