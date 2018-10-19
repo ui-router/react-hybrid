@@ -45,7 +45,15 @@ hybridModule.directive('reactUiViewAdapter', function() {
 
       // The UIView ref callback, which is called after the initial render
       const ref = ref => {
-        if (ref && _ref === ref) return;
+        if (
+          // If refs are the same - don't re-render React component.
+          (ref && _ref === ref) ||
+          // If previously there was a ref, and the new `ref` is empty - the component was unmounted.
+          // Leave the unmounted component as it was, and don't try to re-mount it.
+          (!ref && _ref)
+        ) {
+          return;
+        }
         _ref = ref;
 
         // log(`${$id}: received new React UIView ref:`, ref);
