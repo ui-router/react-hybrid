@@ -45,18 +45,20 @@ hybridModule.directive('reactUiViewAdapter', function() {
 
       // The UIView ref callback, which is called after the initial render
       const ref = ref => {
-        if (
-          // If refs are the same - don't re-render React component.
-          (ref && _ref === ref) ||
-          // If previously there was a ref, and the new `ref` is empty - the component was unmounted.
-          // Leave the unmounted component as it was, and don't try to re-mount it.
-          (!ref && _ref)
-        ) {
+        // If refs are the same - don't re-render React component.
+        const isSameRef = ref && _ref === ref;
+
+        // If previously there was a ref, and the new `ref` is empty - the component was unmounted.
+        // Leave the unmounted component as it was, and don't try to re-mount it.
+        const isComponentUnmounted = !ref && _ref;
+
+        if (isSameRef || isComponentUnmounted) {
           return;
         }
+
         _ref = ref;
 
-        // log(`${$id}: received new React UIView ref:`, ref);
+        log(`${$id}: received new React UIView ref:`, ref);
 
         // Add the $uiView data to the adapter element to provide context to child angular elements
         provideContextToAngularJSChildren();
