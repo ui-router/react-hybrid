@@ -1,10 +1,8 @@
 import * as React from 'react';
-import * as angular from 'angular';
 import * as ReactDOM from 'react-dom';
 import { hybridModule } from './module';
-import { UIView, UIViewProps, UIRouterConsumer, UIViewConsumer } from '@uirouter/react';
 import { filter } from '@uirouter/core';
-import { UIRouterContextComponent } from '../react/UIRouterReactContext';
+import ReactUIView from '../react/ReactUIView';
 
 // When an angularjs `ui-view` is instantiated, also create an react-ui-view-adapter (which creates a react UIView)
 hybridModule.directive('uiView', function() {
@@ -92,14 +90,24 @@ hybridModule.directive('reactUiViewAdapter', function() {
         }
 
         const props = { ...attrs, render, wrap: false, refFn: ref };
+        const setChildViewProps = (scope as any).setChildViewProps;
+        if (setChildViewProps) {
+          setChildViewProps(props, el);
+        } else {
+          ReactDOM.render<any>(<ReactUIView {...props} />, el as any);
+        }
         // console.log(`${$id}: rendering ReactUIView with props`, props);
-        ReactDOM.render<any>(<ReactUIView {...props} />, el as any);
       }
 
       scope.$on('$destroy', () => {
         destroyed = true;
-        const unmounted = ReactDOM.unmountComponentAtNode(el);
-        // console.log(`${$id}: angular $destroy event -- unmountComponentAtNode(): ${unmounted}`, el);
+        const setChildViewProps = (scope as any).setChildViewProps;
+        if (setChildViewProps) {
+          setChildViewProps(null);
+        } else {
+          const unmounted = ReactDOM.unmountComponentAtNode(el);
+          // console.log(`${$id}: angular $destroy event -- unmountComponentAtNode(): ${unmounted}`, el);
+        }
         // Remove using jQLite element for cross-browser compatibility.
         elem.remove();
       });
@@ -108,17 +116,3 @@ hybridModule.directive('reactUiViewAdapter', function() {
     },
   };
 });
-
-const InternalUIView = UIView.__internalViewComponent;
-
-const ReactUIView = ({ refFn, ...props }) => (
-  <UIRouterContextComponent parentContextLevel="3">
-    <UIRouterConsumer>
-      {router => (
-        <UIViewConsumer>
-          {parentUiView => <InternalUIView {...props} ref={refFn} parentUIView={parentUiView} router={router} />}
-        </UIViewConsumer>
-      )}
-    </UIRouterConsumer>
-  </UIRouterContextComponent>
-);
