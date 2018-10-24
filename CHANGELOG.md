@@ -1,3 +1,14 @@
+## 0.3.5 (2018-10-24)
+[Compare `@uirouter/react-hybrid` versions 0.3.4 and 0.3.5](https://github.com/ui-router/react-hybrid/compare/0.3.4...0.3.5)
+
+### Bug Fixes
+
+Big thanks to [@jutaz](https://github.com/jutaz)!
+
+* Do not re-render a component that has been unmounted ([2c41f98d0589541067fd8b38f0d4e0c603d15984](https://github.com/ui-router/react-hybrid/commit/2c41f98d0589541067fd8b38f0d4e0c603d15984)) [#134](https://github.com/ui-router/react-hybrid/pull/134)
+* Use JQLite to remove an element for IE11 compat ([2f1c6bc9731a2287569a865107563cead9f6bf27](https://github.com/ui-router/react-hybrid/commit/2f1c6bc9731a2287569a865107563cead9f6bf27)) [#92](https://github.com/ui-router/react-hybrid/pull/92)
+* Use JQLite to remove an element for IE11 compat ([2f1c6bc9731a2287569a865107563cead9f6bf27](https://github.com/ui-router/react-hybrid/commit/2f1c6bc9731a2287569a865107563cead9f6bf27)) [#92](https://github.com/ui-router/react-hybrid/pull/92)
+
 ## 0.3.4 (2018-08-12)
 [Compare `@uirouter/react-hybrid` versions 0.3.3 and 0.3.4](https://github.com/ui-router/react-hybrid/compare/0.3.3...0.3.4)
 
