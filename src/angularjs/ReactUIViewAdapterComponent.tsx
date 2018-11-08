@@ -56,7 +56,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
 
         _ref = ref;
 
-        log(`${$id}: received new React UIView ref:`, ref);
+        // log(`${$id}: received new React UIView ref:`, ref);
 
         // Add the $uiView data to the adapter element to provide context to child angular elements
         provideContextToAngularJSChildren();
