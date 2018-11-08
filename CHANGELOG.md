@@ -1,3 +1,10 @@
+## 0.3.6 (2018-11-08)
+[Compare `@uirouter/react-hybrid` versions 0.3.5 and 0.3.6](https://github.com/ui-router/react-hybrid/compare/0.3.5...0.3.6)
+
+### Features
+
+* **UIView:** Use React Portals: Allows React Context to propagate through UIViews. All UIViews now render using the same React instance.  ([5f76b16ff670a3e325909440cf33b3e56829880d](https://github.com/ui-router/react-hybrid/commit/5f76b16ff670a3e325909440cf33b3e56829880d)) [#138](https://github.com/ui-router/react-hybrid/pull/138)
+
 ## 0.3.5 (2018-10-24)
 [Compare `@uirouter/react-hybrid` versions 0.3.4 and 0.3.5](https://github.com/ui-router/react-hybrid/compare/0.3.4...0.3.5)
 
