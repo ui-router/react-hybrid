@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { UIView } from '@uirouter/react';
 import { AngularUIView } from './AngularUIView';
+import ReactUIView from "./ReactUIView";
 
 /**
  * Monkey patches the @uirouter/react UIView such that:
@@ -20,10 +22,44 @@ import { AngularUIView } from './AngularUIView';
  */
 const realRender = UIView.prototype.render;
 
+class PortalView extends React.PureComponent {
+  state = {
+    props: null,
+    target: null,
+  };
+
+  setChildViewProps = (props, target) => {
+    this.setState({ props, target });
+  };
+
+  renderPortal() {
+    if (!this.state) return null;
+    const { props, target } = this.state;
+    if (props && target) {
+      return ReactDOM.createPortal(
+        <ReactUIView {...props} />,
+        target
+      );
+    }
+    return null;
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <AngularUIView {...this.props} setChildViewProps={this.setChildViewProps}/>
+        {this.renderPortal()}
+      </React.Fragment>
+    )
+  }
+}
+
 UIView.prototype.render = function() {
   if (this.props.wrap === false) {
     return realRender.apply(this, arguments);
   }
 
-  return <AngularUIView {...this.props} />;
+  return (
+    <PortalView {...this.props}/>
+  );
 };

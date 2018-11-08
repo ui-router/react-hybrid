@@ -7,6 +7,7 @@ import IInjectorService = angular.auto.IInjectorService;
 
 export interface IUIRouterContextComponentProps {
   parentContextLevel?: string;
+  inherited?: boolean;
 }
 
 export interface IUIRouterContextComponentState {
@@ -27,6 +28,7 @@ export class UIRouterContextComponent extends React.Component<
 > {
   public static defaultProps: Partial<IUIRouterContextComponentProps> = {
     parentContextLevel: '0',
+    inherited: true,
   };
 
   public state: IUIRouterContextComponentState = {
@@ -71,13 +73,14 @@ export class UIRouterContextComponent extends React.Component<
 
   private renderChild(child: ReactElement<any>) {
     // console.log('renderChild()', child);
+    const inherited = this.props.inherited;
     return (
       <UIRouterConsumer>
         {routerFromReactContext => (
-          <UIRouterProvider value={routerFromReactContext || this.state.router}>
+          <UIRouterProvider value={inherited && routerFromReactContext || this.state.router}>
             <UIViewConsumer>
               {parentUIViewFromReactContext => (
-                <UIViewProvider value={parentUIViewFromReactContext || this.state.parentUIViewAddress}>
+                <UIViewProvider value={inherited && parentUIViewFromReactContext || this.state.parentUIViewAddress}>
                   {child}
                 </UIViewProvider>
               )}

@@ -22,6 +22,8 @@ export class AngularUIView extends React.Component<any, any> {
     this.state = {
       $scope: $rootScope.$new(),
     };
+
+    this.state.$scope.setChildViewProps = this.props.setChildViewProps;
   }
 
   render() {
