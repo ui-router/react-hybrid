@@ -1,3 +1,10 @@
+## 0.3.7 (2018-11-08)
+[Compare `@uirouter/react-hybrid` versions 0.3.6 and 0.3.7](https://github.com/ui-router/react-hybrid/compare/0.3.6...0.3.7)
+
+### Bug Fixes
+
+* **ReactUIViewAdapter:** Turn off debug statement (whops) ([cb8b64d](https://github.com/ui-router/react-hybrid/commit/cb8b64d))
+
 ## 0.3.6 (2018-11-08)
 [Compare `@uirouter/react-hybrid` versions 0.3.5 and 0.3.6](https://github.com/ui-router/react-hybrid/compare/0.3.5...0.3.6)
 
