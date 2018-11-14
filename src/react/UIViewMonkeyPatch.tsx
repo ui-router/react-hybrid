@@ -34,7 +34,7 @@ class PortalView extends React.PureComponent {
   };
 
   private debug = (method: string, message: string, ...args) =>
-    debugLog('react     PortalView', `${this.$id}/${this.props['name']}`, method, message, ...args);
+    debugLog('react', 'PortalView', `${this.$id}/${this.props['name']}`, method, message, ...args);
 
   public componentWillUnmount() {
     this.debug('.componentWillUnmount()', '');
@@ -74,7 +74,7 @@ class PortalView extends React.PureComponent {
 
 UIView.prototype.render = function() {
   if (this.props.wrap === false) {
-    debugLog('react     UIView', `${this.$id}/${this.props['name']}`, '.render()', 'realRender.apply(this, arguments)');
+    debugLog('react', 'UIView', `${this.$id}/${this.props['name']}`, '.render()', 'realRender.apply(this, arguments)');
     return <div className="UIView">{realRender.apply(this, arguments)}</div>;
   }
 

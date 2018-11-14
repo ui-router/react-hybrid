@@ -12,7 +12,7 @@ hybridModule.directive('uiView', function() {
     compile: function(tElem, tAttrs) {
       let { name, uiView } = tAttrs;
       name = name || uiView || '$default';
-      debugLog('angularjs ui-view', '', '.compile()', 'Creating react-ui-view-adapter', tElem);
+      debugLog('angularjs', 'ui-view', '?', '.compile()', 'Creating react-ui-view-adapter', tElem);
       tElem.html(`<react-ui-view-adapter name="${name}"></react-ui-view-adapter>`);
     },
   };
@@ -28,7 +28,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
     restrict: 'E',
     link: function(scope, elem, attrs) {
       const debug = (method: string, message: string, ...args) =>
-        debugLog('angularjs react-ui-view-adapter', `${$id}/${attrs.name}`, method, message, ...args);
+        debugLog('angularjs', 'react-ui-view-adapter', `${$id}/${attrs.name}`, method, message, ...args);
 
       const el = elem[0];
       let _ref = null;
