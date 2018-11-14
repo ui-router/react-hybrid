@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { UIView } from '@uirouter/react';
 import { AngularUIView } from './AngularUIView';
-import ReactUIView from "./ReactUIView";
+import ReactUIView from './ReactUIView';
+import { debug as debugLog } from '../debug';
 
 /**
  * Monkey patches the @uirouter/react UIView such that:
@@ -22,44 +23,60 @@ import ReactUIView from "./ReactUIView";
  */
 const realRender = UIView.prototype.render;
 
+let id = 0;
+
 class PortalView extends React.PureComponent {
-  state = {
+  private $id = id++;
+
+  public state = {
     props: null,
     target: null,
   };
 
+  private debug = (method: string, message: string, ...args) =>
+    debugLog('react     PortalView', `${this.$id}/${this.props['name']}`, method, message, ...args);
+
+  public componentWillUnmount() {
+    this.debug('.componentWillUnmount()', '');
+  }
+
   setChildViewProps = (props, target) => {
+    this.debug('.setChildViewProps()', JSON.stringify(props), target);
     this.setState({ props, target });
   };
 
   renderPortal() {
-    if (!this.state) return null;
     const { props, target } = this.state;
+
     if (props && target) {
-      return ReactDOM.createPortal(
-        <ReactUIView {...props} />,
-        target
+      this.debug(
+        `.renderPortal({ name: ${this.props['name']} })`,
+        'rendering portal',
+        this.state.props,
+        this.state.target
       );
+      return ReactDOM.createPortal(<ReactUIView {...props} />, target);
     }
+
+    this.debug(`.renderPortal({ name: ${this.props['name']} })`, 'no target; not rendering portal');
     return null;
   }
 
   render() {
     return (
       <React.Fragment>
-        <AngularUIView {...this.props} setChildViewProps={this.setChildViewProps}/>
+        <AngularUIView {...this.props} setChildViewProps={this.setChildViewProps} />
         {this.renderPortal()}
       </React.Fragment>
-    )
+    );
   }
 }
 
 UIView.prototype.render = function() {
   if (this.props.wrap === false) {
-    return realRender.apply(this, arguments);
+    debugLog('react     UIView', `${this.$id}/${this.props['name']}`, '.render()', 'realRender.apply(this, arguments)');
+    return <div className="UIView">{realRender.apply(this, arguments)}</div>;
   }
 
-  return (
-    <PortalView {...this.props}/>
-  );
+  return <PortalView {...this.props} />;
 };

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { hybridModule } from './module';
 import { filter } from '@uirouter/core';
 import ReactUIView from '../react/ReactUIView';
+import { hybridModule } from './module';
+import { debug as debugLog } from '../debug';
 
 // When an angularjs `ui-view` is instantiated, also create an react-ui-view-adapter (which creates a react UIView)
 hybridModule.directive('uiView', function() {
@@ -11,7 +12,7 @@ hybridModule.directive('uiView', function() {
     compile: function(tElem, tAttrs) {
       let { name, uiView } = tAttrs;
       name = name || uiView || '$default';
-      // console.log('Creating react-ui-view-adapter', tElem);
+      debugLog('angularjs ui-view', '', '.compile()', 'Creating react-ui-view-adapter', tElem);
       tElem.html(`<react-ui-view-adapter name="${name}"></react-ui-view-adapter>`);
     },
   };
@@ -26,6 +27,9 @@ hybridModule.directive('reactUiViewAdapter', function() {
   return {
     restrict: 'E',
     link: function(scope, elem, attrs) {
+      const debug = (method: string, message: string, ...args) =>
+        debugLog('angularjs react-ui-view-adapter', `${$id}/${attrs.name}`, method, message, ...args);
+
       const el = elem[0];
       let _ref = null;
       let destroyed = false;
@@ -33,13 +37,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
       const ignoredAttrKeys = ['$$element', '$attr'];
       attrs = filter(attrs, (val, key) => ignoredAttrKeys.indexOf(key) === -1) as any;
 
-      // console.log(`${$id}: linking react-ui-view-adapter into `, el, attrs)
-
-      const log = (msg, UIViewRef) => {
-        const id = UIViewRef && UIViewRef.state && UIViewRef.state.id;
-        const cmp = UIViewRef && UIViewRef.componentInstance;
-        console.log(msg, `Has UIViewRef: ${!!UIViewRef}`, id, cmp);
-      };
+      debug('.link()', 'linking react-ui-view-adapter into ', el, attrs);
 
       // The UIView ref callback, which is called after the initial render
       const ref = ref => {
@@ -56,7 +54,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
 
         _ref = ref;
 
-        // log(`${$id}: received new React UIView ref:`, ref);
+        debug('.ref()', 'Received new React UIView ref', ref);
 
         // Add the $uiView data to the adapter element to provide context to child angular elements
         provideContextToAngularJSChildren();
@@ -65,7 +63,8 @@ hybridModule.directive('reactUiViewAdapter', function() {
 
       // The render callback for the React UIView
       const render = (cmp, props: object) => {
-        // log('render', _ref);
+        debug('.render()', `has ref: ${!!_ref}`);
+
         provideContextToAngularJSChildren();
         // Only create the children when the _ref is ready
         return !_ref ? null : React.createElement(cmp, props);
@@ -74,7 +73,9 @@ hybridModule.directive('reactUiViewAdapter', function() {
       const provideContextToAngularJSChildren = () => {
         const $cfg = _ref && _ref.uiViewData && _ref.uiViewData.config;
         const $uiView = _ref && _ref.uiViewAddress;
-        // console.log(`${$id}: providing context to angularjs children`, el, $cfg, $uiView);
+
+        debug('.provideContextToAngularJSChildren', '', el, $cfg, $uiView);
+
         if (!$cfg || !$uiView) {
           elem.removeData('$uiView');
         } else {
@@ -83,20 +84,20 @@ hybridModule.directive('reactUiViewAdapter', function() {
       };
 
       function renderReactUIView() {
-        // console.log(`${$id}: rendering react uiview into container`, el);
         if (destroyed) {
-          // console.error(`${$id}: react-ui-view-adapter has already been destroyed -- not rendering React UIView`);
+          debug('.renderReactUIView()', `already destroyed -- will not render React UIView`);
           return;
         }
 
         const props = { ...attrs, render, wrap: false, refFn: ref };
         const setChildViewProps = (scope as any).setChildViewProps;
         if (setChildViewProps) {
+          debug('.renderReactUIView()', `will setChildViewProps({ name: '${props['name']}' })`, el);
           setChildViewProps(props, el);
         } else {
+          debug('.renderReactUIView()', `ReactDOM.render(<ReactUIView name="${props['name']}"/>)`, el);
           ReactDOM.render<any>(<ReactUIView {...props} />, el as any);
         }
-        // console.log(`${$id}: rendering ReactUIView with props`, props);
       }
 
       scope.$on('$destroy', () => {
@@ -106,7 +107,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
           setChildViewProps(null);
         } else {
           const unmounted = ReactDOM.unmountComponentAtNode(el);
-          // console.log(`${$id}: angular $destroy event -- unmountComponentAtNode(): ${unmounted}`, el);
+          debug('.$on("$destroy")', `unmountComponentAtNode(): ${unmounted}`, el);
         }
         // Remove using jQLite element for cross-browser compatibility.
         elem.remove();
