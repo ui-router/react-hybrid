@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { filter } from '@uirouter/core';
+import { IPortalScope } from '../react/AngularUIView';
+import { PortalView } from '../react/PortalView';
 import ReactUIView from '../react/ReactUIView';
 import { hybridModule } from './module';
 import { debug as debugLog } from '../debug';
@@ -26,7 +28,7 @@ var id = 0;
 hybridModule.directive('reactUiViewAdapter', function() {
   return {
     restrict: 'E',
-    link: function(scope, elem, attrs) {
+    link: function(scope: IPortalScope, elem, attrs) {
       const debug = (method: string, message: string, ...args) =>
         debugLog('angularjs', 'react-ui-view-adapter', `${$id}/${attrs.name}`, method, message, ...args);
 
@@ -90,10 +92,10 @@ hybridModule.directive('reactUiViewAdapter', function() {
         }
 
         const props = { ...attrs, render, wrap: false, refFn: ref };
-        const setChildViewProps = (scope as any).setChildViewProps;
-        if (setChildViewProps) {
-          debug('.renderReactUIView()', `will setChildViewProps({ name: '${props['name']}' })`, el);
-          setChildViewProps(props, el);
+        const portalView: PortalView = scope.$uiRouterReactHybridPortalView;
+        if (portalView) {
+          debug('.renderReactUIView()', `will createPortalToTarget({ name: '${props['name']}' })`, el);
+          portalView.createPortalToTarget(props, el);
         } else {
           debug('.renderReactUIView()', `ReactDOM.render(<ReactUIView name="${props['name']}"/>)`, el);
           ReactDOM.render<any>(<ReactUIView {...props} />, el as any);
@@ -102,9 +104,9 @@ hybridModule.directive('reactUiViewAdapter', function() {
 
       scope.$on('$destroy', () => {
         destroyed = true;
-        const setChildViewProps = (scope as any).setChildViewProps;
-        if (setChildViewProps) {
-          setChildViewProps(null);
+        const portalView: PortalView = scope.$uiRouterReactHybridPortalView;
+        if (portalView) {
+          portalView.createPortalToTarget(null, null);
         } else {
           const unmounted = ReactDOM.unmountComponentAtNode(el);
           debug('.$on("$destroy")', `unmountComponentAtNode(): ${unmounted}`, el);

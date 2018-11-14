@@ -1,5 +1,7 @@
-import { hybridModule } from '../angularjs/module';
 import * as React from 'react';
+import { IScope } from 'angular';
+import { hybridModule } from '../angularjs/module';
+import { PortalView } from './PortalView';
 
 let $injector, $rootScope, $compile;
 hybridModule.run([
@@ -11,39 +13,37 @@ hybridModule.run([
   },
 ]);
 
+interface IAngularUIViewProps {
+  portalView?: PortalView;
+  className?: string;
+}
+
+export interface IPortalScope extends IScope {
+  $uiRouterReactHybridPortalView?: PortalView;
+}
+
 /**
  * A React component which renders an AngularJS <ui-view>
  * This was heavily influenced by https://github.com/coatue-oss/angular2react
  */
-export class AngularUIView extends React.Component<any, any> {
-  constructor(props) {
+export class AngularUIView extends React.Component<IAngularUIViewProps> {
+  private $scope: IPortalScope = $rootScope.$new();
+
+  constructor(props: IAngularUIViewProps) {
     super(props);
+    this.$scope.$uiRouterReactHybridPortalView = this.props.portalView;
+  }
 
-    this.state = {
-      $scope: $rootScope.$new(),
-    };
-
-    this.state.$scope.setChildViewProps = this.props.setChildViewProps;
+  componentWillUnmount() {
+    this.$scope.$destroy();
   }
 
   render() {
     const { className, ...restProps } = this.props;
+    const ref = (htmlRef: Element) => $compile(htmlRef)(this.$scope);
 
-    let props = {
-      ...restProps,
-      class: className,
-      ref: this.compile.bind(this),
-    };
-
+    const props = { ...restProps, class: className, ref };
     return React.createElement('ui-view', props);
-  }
-
-  compile(ref: Element) {
-    $compile(ref)(this.state.$scope);
-  }
-
-  componentWillUnmount() {
-    this.state.$scope.$destroy();
   }
 
   /** Only render once */
