@@ -3,9 +3,9 @@ import * as ReactDOM from 'react-dom';
 import { filter } from '@uirouter/core';
 import { IPortalScope } from '../react/AngularUIView';
 import { PortalView } from '../react/PortalView';
-import ReactUIView from '../react/ReactUIView';
+import { ReactUIView } from '../react/ReactUIView';
 import { hybridModule } from './module';
-import { debug as debugLog } from '../debug';
+import { debugLog } from '../debug';
 
 // When an angularjs `ui-view` is instantiated, also create an react-ui-view-adapter (which creates a react UIView)
 hybridModule.directive('uiView', function() {
@@ -42,7 +42,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
       debug('.link()', 'linking react-ui-view-adapter into ', el, attrs);
 
       // The UIView ref callback, which is called after the initial render
-      const ref = ref => {
+      const ref = (ref: HTMLElement) => {
         // If refs are the same - don't re-render React component.
         const isSameRef = ref && _ref === ref;
 
@@ -91,14 +91,15 @@ hybridModule.directive('reactUiViewAdapter', function() {
           return;
         }
 
-        const props = { ...attrs, render, wrap: false, refFn: ref };
+        const childUIViewProps = { ...attrs, render, wrap: false, refFn: ref };
         const portalView: PortalView = scope.$uiRouterReactHybridPortalView;
+
         if (portalView) {
-          debug('.renderReactUIView()', `will createPortalToTarget({ name: '${props['name']}' })`, el);
-          portalView.createPortalToTarget(props, el);
+          debug('.renderReactUIView()', `will createPortalToChildUIView({ name: '${childUIViewProps['name']}' })`, el);
+          portalView.createPortalToChildUIView($id, { childUIViewProps, portalTarget: el });
         } else {
-          debug('.renderReactUIView()', `ReactDOM.render(<ReactUIView name="${props['name']}"/>)`, el);
-          ReactDOM.render<any>(<ReactUIView {...props} />, el as any);
+          debug('.renderReactUIView()', `ReactDOM.render(<ReactUIView name="${childUIViewProps['name']}"/>)`, el);
+          ReactDOM.render<any>(<ReactUIView {...childUIViewProps} />, el as any);
         }
       }
 
@@ -106,7 +107,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
         destroyed = true;
         const portalView: PortalView = scope.$uiRouterReactHybridPortalView;
         if (portalView) {
-          portalView.createPortalToTarget(null, null);
+          portalView.removePortalToChildUIView($id);
         } else {
           const unmounted = ReactDOM.unmountComponentAtNode(el);
           debug('.$on("$destroy")', `unmountComponentAtNode(): ${unmounted}`, el);

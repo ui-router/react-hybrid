@@ -1,24 +1,30 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { UIView, UIViewProps } from '@uirouter/react';
+import { UIViewProps } from '@uirouter/react';
+import { debugLog } from '../debug';
 import { AngularUIView } from './AngularUIView';
-import ReactUIView from './ReactUIView';
-import { debug as debugLog } from '../debug';
+import { IReactUIViewProps, ReactUIView } from './ReactUIView';
 
 let id = 0;
 
 interface IPortalViewState {
-  props: any;
-  target: HTMLElement;
+  portals: {
+    [key: number]: ChildUIView;
+  };
 }
 
+export interface ChildUIView {
+  childUIViewProps: IReactUIViewProps;
+  portalTarget: HTMLElement;
+}
+
+/**
+ * This react component renders the AngularUIView react component
+ * and also creates React Portals as needed for child React UIViews.
+ */
 export class PortalView extends React.PureComponent<UIViewProps, IPortalViewState> {
   private $id = id++;
-
-  public state = {
-    props: null,
-    target: null,
-  };
+  public state: IPortalViewState = { portals: [] };
 
   private debug = (method: string, message: string, ...args) =>
     debugLog('react', 'PortalView', `${this.$id}/${this.props['name']}`, method, message, ...args);
@@ -27,22 +33,42 @@ export class PortalView extends React.PureComponent<UIViewProps, IPortalViewStat
     this.debug('.componentWillUnmount()', '');
   }
 
-  createPortalToTarget = (props, target) => {
-    this.debug('.createPortalToTarget()', JSON.stringify(props), target);
-    this.setState({ props, target });
+  createPortalToChildUIView = (uiViewId: number, childUIView: ChildUIView) => {
+    this.debug('.createPortalToChildUIView()', JSON.stringify(childUIView.childUIViewProps), childUIView.portalTarget);
+    this.setState(prev => {
+      const portals = { ...prev.portals, [uiViewId]: childUIView };
+      return { portals };
+    });
   };
 
-  renderPortal() {
-    const { props, target } = this.state;
-    const method = `.renderPortal({ name: ${this.props['name']} })`;
+  removePortalToChildUIView = (uiViewId: number) => {
+    const childUIView = this.state.portals[uiViewId] || ({} as ChildUIView);
+    this.debug('.removePortalToChildUIView()', `${uiViewId}`, childUIView.childUIViewProps, childUIView.portalTarget);
+    this.setState(prev => {
+      const portals = { ...prev.portals };
+      delete portals[uiViewId];
+      return { portals };
+    });
+  };
 
-    if (props && target) {
-      this.debug(method, 'ReactDOM.createPortal()', this.state.props, this.state.target);
-      return ReactDOM.createPortal(<ReactUIView {...props} />, target);
-    } else {
-      this.debug(method, 'no target; not rendering portal');
-      return null;
-    }
+  renderPortals() {
+    const { portals } = this.state;
+    const method = `.renderPortals()`;
+
+    Object.keys(portals).forEach(key => {
+      const portal = portals[key];
+      this.debug(method, `ReactDOM.createPortal(${key})`, '', portal.childUIViewProps, portal.portalTarget);
+    });
+
+    return Object.keys(portals).map(key => {
+      const portal = portals[key];
+      // No mechanism to provide a key when creating a portals array?
+      return (
+        <div style={{ display: 'none' }} key={`${key}`}>
+          {ReactDOM.createPortal(<ReactUIView {...portal.childUIViewProps} />, portal.portalTarget)}
+        </div>
+      );
+    });
   }
 
   render() {
@@ -51,7 +77,7 @@ export class PortalView extends React.PureComponent<UIViewProps, IPortalViewStat
     return (
       <React.Fragment>
         <AngularUIView {...this.props} portalView={this} />
-        {this.renderPortal()}
+        {this.renderPortals()}
       </React.Fragment>
     );
   }

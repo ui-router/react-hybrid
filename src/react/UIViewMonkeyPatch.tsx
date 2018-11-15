@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { UIView } from '@uirouter/react';
-import { debug as debugLog } from '../debug';
+import { debugLog } from '../debug';
 import { PortalView } from './PortalView';
 
 const realRender = UIView.prototype.render;

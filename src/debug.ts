@@ -1,6 +1,6 @@
 import { padString } from '@uirouter/core';
 
-export const debug = (
+export const debugLog = (
   angularOrReact: 'angularjs' | 'react',
   component: string,
   id: string,

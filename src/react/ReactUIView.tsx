@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { UIRouterConsumer, UIView, UIViewConsumer } from '@uirouter/react';
+import { UIRouterConsumer, UIView, UIViewConsumer, UIViewProps } from '@uirouter/react';
 import { UIRouterContextComponent } from './UIRouterReactContext';
-import { debug as debugLog } from '../debug';
+import { debugLog } from '../debug';
 
 const InternalUIView = UIView.__internalViewComponent;
 
-const ReactUIView = ({ refFn, ...props }) => {
+export interface IReactUIViewProps extends UIViewProps {
+  refFn: (ref: HTMLElement) => void;
+}
+
+export const ReactUIView = ({ refFn, ...props }: IReactUIViewProps) => {
   debugLog('react', 'ReactUIView', `?/${props['name']}`, '.render()', '');
 
   return (
@@ -13,12 +17,12 @@ const ReactUIView = ({ refFn, ...props }) => {
       <UIRouterConsumer>
         {router => (
           <UIViewConsumer>
-            {parentUiView => <InternalUIView {...props} ref={refFn} parentUIView={parentUiView} router={router} />}
+            {parentUiView => (
+              <InternalUIView {...props} ref={refFn as any} parentUIView={parentUiView} router={router} />
+            )}
           </UIViewConsumer>
         )}
       </UIRouterConsumer>
     </UIRouterContextComponent>
   );
 };
-
-export default ReactUIView;
