@@ -26,7 +26,7 @@ UIView.prototype.render = function() {
   if (this.props.wrap === false) {
     const id = `${this.$id}/${this.props['name']}`;
     debugLog('react', 'UIViewMonkeyPatch', id, '.render()', 'realRender.apply(this, arguments)');
-    return <div className="UIView">{realRender.apply(this, arguments)}</div>;
+    return realRender.apply(this, arguments);
   }
 
   return <PortalView {...this.props} />;
