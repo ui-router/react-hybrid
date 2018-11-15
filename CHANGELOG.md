@@ -1,3 +1,10 @@
+## 0.3.9 (2018-11-15)
+[Compare `@uirouter/react-hybrid` versions 0.3.8 and 0.3.9](https://github.com/ui-router/react-hybrid/compare/0.3.8...0.3.9)
+
+### Bug Fixes
+
+* **UIVieMonkeyPatch:** Remove erroneously added <div class="UIView"> ([c189c99](https://github.com/ui-router/react-hybrid/commit/c189c99))
+
 ## 0.3.8 (2018-11-15)
 [Compare `@uirouter/react-hybrid` versions 0.3.7 and 0.3.8](https://github.com/ui-router/react-hybrid/compare/0.3.7...0.3.8)
 
