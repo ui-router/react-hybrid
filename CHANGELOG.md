@@ -1,3 +1,16 @@
+## 0.3.8 (2018-11-15)
+[Compare `@uirouter/react-hybrid` versions 0.3.7 and 0.3.8](https://github.com/ui-router/react-hybrid/compare/0.3.7...0.3.8)
+
+### Bug Fixes
+
+* **Portal:** Support creating portals for multiple nested UIViews ([ab4edcb](https://github.com/ui-router/react-hybrid/commit/ab4edcb))
+
+
+### Features
+
+* Add debugLog mechanism ([94fe097](https://github.com/ui-router/react-hybrid/commit/94fe097))
+* Tweak debugLog output into columns ([ac0dda2](https://github.com/ui-router/react-hybrid/commit/ac0dda2))
+
 ## 0.3.7 (2018-11-08)
 [Compare `@uirouter/react-hybrid` versions 0.3.6 and 0.3.7](https://github.com/ui-router/react-hybrid/compare/0.3.6...0.3.7)
 
