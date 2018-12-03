@@ -31,7 +31,7 @@
     "@uirouter/publish-scripts": "^2.3.21",
     "angular": "^1.7.5",
     "husky": "^1.2.0",
-    "prettier": "^1.15.2",
+    "prettier": "^1.15.3",
     "pretty-quick": "^1.8.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
