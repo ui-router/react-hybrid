@@ -50,9 +50,9 @@
   version "9.12.3"
   resolved "https://registry.yarnpkg.com/@types/highlight.js/-/highlight.js-9.12.3.tgz#b672cfaac25cbbc634a0fd92c515f66faa18dbca"
 
-"@types/jquery@^3.3.22":
-  version "3.3.22"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.22.tgz#cde55dc8f83207dffd16205b05f97ce824581735"
+"@types/jquery@^3.3.24":
+  version "3.3.24"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.24.tgz#3af73accd9da56a1fd59c706ca2145bd73a91c65"
   dependencies:
     "@types/sizzle" "*"
 
