@@ -33,7 +33,7 @@
     "husky": "^1.2.1",
     "prettier": "^1.15.3",
     "pretty-quick": "^1.8.0",
-    "react": "^16.6.3",
+    "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "rollup": "^0.67.4",
     "rollup-plugin-commonjs": "^9.2.0",
