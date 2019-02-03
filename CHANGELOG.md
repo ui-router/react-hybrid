@@ -1,3 +1,32 @@
+## 0.3.10 (2019-02-03)
+[Compare `@uirouter/react-hybrid` versions 0.3.9 and 0.3.10](https://github.com/ui-router/react-hybrid/compare/0.3.9...0.3.10)
+
+
+### Updated `@uirouter/core` from 5.0.21 to 5.0.23
+[Compare `@uirouter/core` versions 5.0.21 and 5.0.23](https://github.com/ui-router/core/compare/5.0.21...5.0.23)
+
+### Bug Fixes
+
+* **lazyLoad:** StateBuilder should not mutate the state declaration ([1478a3c](https://github.com/ui-router/core/commit/1478a3c)), closes [/github.com/ui-router/core/commit/3cd5a2a#r31260154](https://github.com//github.com/ui-router/core/commit/3cd5a2a/issues/r31260154)
+* **state:** Update URL in response to ignored transition due to redirect ([c64c252](https://github.com/ui-router/core/commit/c64c252))
+* **test_downstream_projects:** don't double build core while testing downstreams ([148b16b](https://github.com/ui-router/core/commit/148b16b))
+* **typescript:** Fix typing of onChange callback in UrlService ([961ed0f](https://github.com/ui-router/core/commit/961ed0f)), closes [#229](https://github.com/ui-router/core/issues/229)
+* **typescript:** Mark `params` as optional in StateService.href ([614bfb4](https://github.com/ui-router/core/commit/614bfb4)), closes [#287](https://github.com/ui-router/core/issues/287)
+* **vanilla:** Fix baseHref parsing with chrome-extension:// urls ([f11be4d](https://github.com/ui-router/core/commit/f11be4d)), closes [#304](https://github.com/ui-router/core/issues/304)
+
+
+### Features
+
+* **TransitionHook:** Pass in transition to HookMatchCriteria ([#255](https://github.com/ui-router/core/issues/255)) ([926705e](https://github.com/ui-router/core/commit/926705e))
+
+
+### Updated `@uirouter/react` from 0.8.7 to 0.8.9
+[Compare `@uirouter/react` versions 0.8.7 and 0.8.9](https://github.com/ui-router/react/compare/0.8.7...0.8.9)
+
+
+### Updated `@uirouter/angularjs` from 1.0.20 to 1.0.22
+[Compare `@uirouter/angularjs` versions 1.0.20 and 1.0.22](https://github.com/angular-ui/ui-router/compare/1.0.20...1.0.22)
+
 ## 0.3.9 (2018-11-15)
 [Compare `@uirouter/react-hybrid` versions 0.3.8 and 0.3.9](https://github.com/ui-router/react-hybrid/compare/0.3.8...0.3.9)
 
