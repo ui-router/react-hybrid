@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UIRouterConsumer, UIView, UIViewConsumer, UIViewProps } from '@uirouter/react';
+import { UIRouterContext, UIView, UIViewContext, UIViewProps } from '@uirouter/react';
 import { UIRouterContextComponent } from './UIRouterReactContext';
 import { debugLog } from '../debug';
 
@@ -14,15 +14,15 @@ export const ReactUIView = ({ refFn, ...props }: IReactUIViewProps) => {
 
   return (
     <UIRouterContextComponent parentContextLevel="3" inherited={false}>
-      <UIRouterConsumer>
+      <UIRouterContext.Consumer>
         {router => (
-          <UIViewConsumer>
+          <UIViewContext.Consumer>
             {parentUiView => (
               <InternalUIView {...props} ref={refFn as any} parentUIView={parentUiView} router={router} />
             )}
-          </UIViewConsumer>
+          </UIViewContext.Consumer>
         )}
-      </UIRouterConsumer>
+      </UIRouterContext.Consumer>
     </UIRouterContextComponent>
   );
 };

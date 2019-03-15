@@ -1,5 +1,5 @@
 import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
-import { UIRouterConsumer, UIRouterProvider, UIRouterReact, UIViewConsumer, UIViewProvider } from '@uirouter/react';
+import { UIRouterContext, UIRouterReact, UIViewContext } from '@uirouter/react';
 import * as angular from 'angular';
 import * as React from 'react';
 import { ReactElement } from 'react';
@@ -75,19 +75,21 @@ export class UIRouterContextComponent extends React.Component<
     // console.log('renderChild()', child);
     const inherited = this.props.inherited;
     return (
-      <UIRouterConsumer>
+      <UIRouterContext.Consumer>
         {routerFromReactContext => (
-          <UIRouterProvider value={inherited && routerFromReactContext || this.state.router}>
-            <UIViewConsumer>
+          <UIRouterContext.Provider value={(inherited && routerFromReactContext) || this.state.router}>
+            <UIViewContext.Consumer>
               {parentUIViewFromReactContext => (
-                <UIViewProvider value={inherited && parentUIViewFromReactContext || this.state.parentUIViewAddress}>
+                <UIViewContext.Provider
+                  value={(inherited && parentUIViewFromReactContext) || this.state.parentUIViewAddress}
+                >
                   {child}
-                </UIViewProvider>
+                </UIViewContext.Provider>
               )}
-            </UIViewConsumer>
-          </UIRouterProvider>
+            </UIViewContext.Consumer>
+          </UIRouterContext.Provider>
         )}
-      </UIRouterConsumer>
+      </UIRouterContext.Consumer>
     );
   }
 
