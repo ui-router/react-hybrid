@@ -34,7 +34,7 @@
     "pretty-quick": "^1.10.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.5",
-    "rollup": "^1.6.0",
+    "rollup": "^1.7.3",
     "rollup-plugin-commonjs": "^9.2.2",
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-sourcemaps": "^0.4.2",
