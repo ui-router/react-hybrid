@@ -1,3 +1,12 @@
+## 0.3.11 (2019-10-08)
+[Compare `@uirouter/react-hybrid` versions 0.3.10 and 0.3.11](https://github.com/ui-router/react-hybrid/compare/0.3.10...0.3.11)
+
+### Bug Fixes
+
+* **example:** move react-scripts to devDependencies ([84da7cc](https://github.com/ui-router/react-hybrid/commit/84da7cc))
+* **package:** Change peerDependency on react from '^15.0.0' to '>=15.0.0' ([8a3551a](https://github.com/ui-router/react-hybrid/commit/8a3551a))
+* **travis:** use service: xvfb instead of launching it manually.  install libgconf debian package to fix cypress ([49ae46b](https://github.com/ui-router/react-hybrid/commit/49ae46b))
+
 ## 0.3.10 (2019-02-03)
 [Compare `@uirouter/react-hybrid` versions 0.3.9 and 0.3.10](https://github.com/ui-router/react-hybrid/compare/0.3.9...0.3.10)
 
