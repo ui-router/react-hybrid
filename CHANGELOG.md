@@ -1,3 +1,78 @@
+## 0.3.12 (2019-10-26)
+[Compare `@uirouter/react-hybrid` versions 0.3.11 and 0.3.12](https://github.com/ui-router/react-hybrid/compare/0.3.11...0.3.12)
+
+### Features
+
+* Allow React functional components ([#331](https://github.com/ui-router/react-hybrid/issues/331)) ([b6a296d](https://github.com/ui-router/react-hybrid/commit/b6a296d))
+
+
+---
+
+
+### Updated `@uirouter/core` from 5.0.23 to 6.0.1
+
+
+Changelog for `@uirouter/core`:
+
+
+[Compare `@uirouter/core` versions 5.0.23 and 6.0.1](https://github.com/ui-router/core/compare/5.0.23...6.0.1)
+
+### Bug Fixes
+
+* **resolve:** remove unnecessary generics from CustomAsyncPolicy ([#452](https://github.com/ui-router/core/issues/452)) ([61f4ee9](https://github.com/ui-router/core/commit/61f4ee9))
+* **travis:** use service: xvfb instead of launching it manually ([1271fcd](https://github.com/ui-router/core/commit/1271fcd))
+* **travis:** use service: xvfb instead of launching it manually.  install libgconf debian package ([ac1ef4b](https://github.com/ui-router/core/commit/ac1ef4b))
+
+
+### Features
+
+* **resolve:** Remove RXWAIT async policy in favour of allowing user defined async policy function ([#366](https://github.com/ui-router/core/issues/366)) ([0ad87f6](https://github.com/ui-router/core/commit/0ad87f6))
+
+
+### BREAKING CHANGES
+
+* **resolve:** RXWAIT async policy has been removed, but it never worked in the first place
+
+
+---
+
+
+### Updated `@uirouter/react` from 0.8.9 to 0.8.10
+
+
+Changelog for `@uirouter/react`:
+
+
+[Compare `@uirouter/react` versions 0.8.9 and 0.8.10](https://github.com/ui-router/react/compare/0.8.9...0.8.10)
+
+### Bug Fixes
+
+* **travis:** use service: xvfb instead of launching it manually.  install libgconf debian package ([07e6fb6](https://github.com/ui-router/react/commit/07e6fb6))
+
+
+### Features
+
+* **package:** fixes to support React.StrictMode ([#512](https://github.com/ui-router/react/issues/512)) ([cd8777a](https://github.com/ui-router/react/commit/cd8777a))
+
+
+---
+
+
+### Updated `@uirouter/angularjs` from 1.0.22 to 1.0.23
+
+
+Changelog for `@uirouter/angularjs`:
+
+
+[Compare `@uirouter/angularjs` versions 1.0.22 and 1.0.23](https://github.com/angular-ui/ui-router/compare/1.0.22...1.0.23)
+
+### Bug Fixes
+
+* **stateFilters:** Export each function individually ([978b882](https://github.com/angular-ui/ui-router/commit/978b882))
+* **travis:** Fix travis build ([dc0f58a](https://github.com/angular-ui/ui-router/commit/dc0f58a))
+* **types:** Remove [@types](https://github.com/types)/jquery from devDependencies, upgrade [@types](https://github.com/types)/angular ([b12bc84](https://github.com/angular-ui/ui-router/commit/b12bc84))
+* **viewDirective:** add check for componentProvider, avoid extra trigger for $onInit (fixing [#3735](https://github.com/angular-ui/ui-router/issues/3735)) ([#3779](https://github.com/angular-ui/ui-router/issues/3779)) ([c3e87ad](https://github.com/angular-ui/ui-router/commit/c3e87ad))
+
 ## 0.3.11 (2019-10-08)
 [Compare `@uirouter/react-hybrid` versions 0.3.10 and 0.3.11](https://github.com/ui-router/react-hybrid/compare/0.3.10...0.3.11)
 
