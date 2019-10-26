@@ -5,11 +5,11 @@ export class ReactComponent extends Component {
   render() {
     return (
       <div>
-        <h1>Hello from react</h1>
-        <h3>{this.props.$state$.name} state loaded</h3> 
+        <h1>Hello from react class component</h1>
+        <h3>{this.props.$state$.name} state loaded</h3>
 
-        <UIView/>
+        <UIView />
       </div>
     );
   }
-};
+}
