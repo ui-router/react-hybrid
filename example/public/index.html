@@ -1,16 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <!--
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <!--
     manifest.json provides metadata used when your web app is added to the
     homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
   -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-  <!--
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!--
     Notice the use of %PUBLIC_URL% in the tags above.
     It will be replaced with the URL of the `public` folder during the build.
     Only files inside the `public` folder can be referenced from the HTML.
@@ -20,24 +20,52 @@
     Learn how to configure a non-root public URL by running `npm run build`.
   -->
 
-  <title>ui-router-react-hybrid</title>
-</head>
-<body>
-<noscript>
-  You need to enable JavaScript to run this app.
-</noscript>
-<div id="root">
-  <a id="react" ui-sref="react" ui-sref-active-eq="active">react</a>
-  <a id="react_angular" ui-sref="react.angular" ui-sref-active-eq="active">react.angular</a>
-  <a id="react_angular_react" ui-sref="react.angular.react" ui-sref-active-eq="active">react.angular.react</a>
-  <a id="react_angular_react_angular" ui-sref="react.angular.react.angular" ui-sref-active-eq="active">react.angular.react.angular</a>
-  <a id="angular" ui-sref="angular" ui-sref-active-eq="active">angular</a>
-  <a id="angular_react" ui-sref="angular.react" ui-sref-active-eq="active">angular.react</a>
-  <a id="angular_react_angular" ui-sref="angular.react.angular" ui-sref-active-eq="active">angular.react.angular</a>
-  <a id="angular_react_angular_react" ui-sref="angular.react.angular.react" ui-sref-active-eq="active">angular.react.angular.react</a>
-  <ui-view></ui-view>
-</div>
-<!--
+    <title>ui-router-react-hybrid</title>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+      <a id="react" ui-sref="react" ui-sref-active-eq="active">react</a>
+      <a id="react_angular" ui-sref="react.angular" ui-sref-active-eq="active">react.angular</a>
+      <a id="react_angular_react" ui-sref="react.angular.react" ui-sref-active-eq="active">react.angular.react</a>
+      <a id="react_angular_react_angular" ui-sref="react.angular.react.angular" ui-sref-active-eq="active"
+        >react.angular.react.angular</a
+      >
+      <a id="angular" ui-sref="angular" ui-sref-active-eq="active">angular</a>
+      <a id="angular_react" ui-sref="angular.react" ui-sref-active-eq="active">angular.react</a>
+      <a id="angular_react_angular" ui-sref="angular.react.angular" ui-sref-active-eq="active">angular.react.angular</a>
+      <a id="angular_react_angular_react" ui-sref="angular.react.angular.react" ui-sref-active-eq="active"
+        >angular.react.angular.react</a
+      >
+      <a
+        id="angularComponentProvider"
+        ui-sref="angularComponentProvider({ component: 'angularComponent' })"
+        ui-sref-active-eq="active"
+        >angularComponentProvider</a
+      >
+      <a
+        id="angularComponentProvider2"
+        ui-sref="angularComponentProvider({ component: 'angularComponent2' })"
+        ui-sref-active-eq="active"
+        >angularComponentProvider</a
+      >
+      <a
+        id="reactComponentProvider"
+        ui-sref="reactComponentProvider({ component: 'ReactComponent' })"
+        ui-sref-active-eq="active"
+        >reactComponentProviderClass</a
+      >
+      <a
+        id="reactComponentProvider2"
+        ui-sref="reactComponentProvider({ component: 'ReactFunctionalComponent' })"
+        ui-sref-active-eq="active"
+        >reactComponentProviderFunctional</a
+      >
+      <ui-view></ui-view>
+    </div>
+    <!--
   This HTML file is a template.
   If you open it directly in the browser, you will see an empty page.
 
@@ -47,5 +75,5 @@
   To begin the development, run `npm start` or `yarn start`.
   To create a production bundle, use `npm run build` or `yarn build`.
 -->
-</body>
+  </body>
 </html>

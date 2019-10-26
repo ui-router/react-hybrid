@@ -63,4 +63,28 @@ describe('example app', () => {
     cy.get('#react_angular_react_angular').click();
     cy.url().should('include', '#!/react/angular/react/angular');
   });
+
+  it('renders angularjs components via componentProvider', () => {
+    cy.visit('');
+
+    cy.get('#angularComponentProvider').click();
+    cy.url().should('include', '#!/angularComponentProvider/angularComponent');
+    cy.contains('Hello from angularjs');
+
+    cy.get('#angularComponentProvider2').click();
+    cy.url().should('include', '#!/angularComponentProvider/angularComponent2');
+    cy.contains('Hello from second angularjs component');
+  });
+
+  it('renders react components via componentProvider', () => {
+    cy.visit('');
+
+    cy.get('#reactComponentProvider').click();
+    cy.url().should('include', '#!/reactComponentProvider/ReactComponent');
+    cy.contains('Hello from react class component');
+
+    cy.get('#reactComponentProvider2').click();
+    cy.url().should('include', '#!/reactComponentProvider/ReactFunctionalComponent');
+    cy.contains('Hello from react functional component');
+  });
 });
