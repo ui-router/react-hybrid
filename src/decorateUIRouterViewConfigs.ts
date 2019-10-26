@@ -27,7 +27,8 @@ hybridModule.config([
       const isReactComponent = cmp =>
         cmp instanceof React.Component ||
         (cmp && cmp.prototype && cmp.prototype.isReactComponent) ||
-        (cmp && cmp.prototype && typeof cmp.prototype.render === 'function');
+        (cmp && cmp.prototype && typeof cmp.prototype.render === 'function') ||
+        (cmp && typeof cmp === 'function');
 
       Object.keys(views).forEach(key => {
         const view = views[key];
