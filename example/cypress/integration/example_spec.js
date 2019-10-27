@@ -21,7 +21,7 @@ describe('example app', () => {
     cy.visit('');
     cy.get('#react').click();
     cy.url().should('include', '#!/react');
-    cy.contains('Hello from react');
+    cy.contains('Hello from react class component');
   });
 
   it('renders react inside angularjs', () => {
@@ -29,14 +29,14 @@ describe('example app', () => {
     cy.get('#angular_react').click();
     cy.url().should('include', '#!/angular/react');
     cy.contains('Hello from angularjs');
-    cy.contains('Hello from react');
+    cy.contains('Hello from react class component');
   });
 
   it('renders angularjs inside react', () => {
     cy.visit('');
     cy.get('#react_angular').click();
     cy.url().should('include', '#!/react/angular');
-    cy.contains('Hello from react');
+    cy.contains('Hello from react class component');
     cy.contains('Hello from angularjs');
   });
 
@@ -44,47 +44,69 @@ describe('example app', () => {
     cy.visit('');
     cy.get('#angular_react_angular').click();
     cy.url().should('include', '#!/angular/react/angular');
+    cy.contains('Hello from angularjs');
+    cy.contains('Hello from react class component');
+    cy.contains('Hello from second angularjs');
   });
 
   it('renders react inside angularjs inside react', () => {
     cy.visit('');
     cy.get('#react_angular_react').click();
     cy.url().should('include', '#!/react/angular/react');
+    cy.contains('Hello from react class component');
+    cy.contains('Hello from angularjs');
+    cy.contains('Hello from react functional component');
   });
 
   it('renders react inside angularjs inside react inside angularjs', () => {
     cy.visit('');
     cy.get('#angular_react_angular_react').click();
     cy.url().should('include', '#!/angular/react/angular/react');
+    cy.contains('Hello from angularjs');
+    cy.contains('Hello from react class component');
+    cy.contains('Hello from second angularjs');
+    cy.contains('Hello from react functional component');
   });
 
   it('renders angularjs inside react inside angularjs inside react', () => {
     cy.visit('');
     cy.get('#react_angular_react_angular').click();
     cy.url().should('include', '#!/react/angular/react/angular');
+    cy.contains('Hello from react class component');
+    cy.contains('Hello from angularjs');
+    cy.contains('Hello from react functional component');
+    cy.contains('Hello from second angularjs');
   });
 
   it('renders angularjs components via componentProvider', () => {
     cy.visit('');
 
-    cy.get('#angularComponentProvider').click();
-    cy.url().should('include', '#!/angularComponentProvider/angularComponent');
+    cy.get('#componentProviderAngular1').click();
+    cy.url().should('include', '#!/componentProvider/angularComponent');
     cy.contains('Hello from angularjs');
 
-    cy.get('#angularComponentProvider2').click();
-    cy.url().should('include', '#!/angularComponentProvider/angularComponent2');
+    cy.get('#componentProviderAngular2').click();
+    cy.url().should('include', '#!/componentProvider/angularComponent2');
     cy.contains('Hello from second angularjs component');
   });
 
-  it('renders artibrary react components via a provider functional component', () => {
+  it('renders artibrary react or angular components via componentProvider', () => {
     cy.visit('');
 
-    cy.get('#reactComponentProvider').click();
-    cy.url().should('include', '#!/reactComponentProvider/ReactComponent');
+    cy.get('#componentProviderAngular1').click();
+    cy.url().should('include', '#!/componentProvider/angularComponent');
+    cy.contains('Hello from angularjs');
+
+    cy.get('#componentProviderReact1').click();
+    cy.url().should('include', '#!/componentProvider/ReactComponent');
     cy.contains('Hello from react class component');
 
-    cy.get('#reactComponentProvider2').click();
-    cy.url().should('include', '#!/reactComponentProvider/ReactFunctionalComponent');
+    cy.get('#componentProviderAngular2').click();
+    cy.url().should('include', '#!/componentProvider/angularComponent2');
+    cy.contains('Hello from second angularjs component');
+
+    cy.get('#componentProviderReact2').click();
+    cy.url().should('include', '#!/componentProvider/ReactFunctionalComponent');
     cy.contains('Hello from react functional component');
   });
 });

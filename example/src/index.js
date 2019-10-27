@@ -10,18 +10,25 @@ import './style.css';
 const states = [
   { name: 'react', url: '/react', component: ReactComponent },
   { name: 'react.angular', url: '/angular', component: 'angularComponent' },
-  { name: 'react.angular.react', url: '/react', component: ReactComponent },
-  { name: 'react.angular.react.angular', url: '/angular', component: 'angularComponent' },
+  { name: 'react.angular.react', url: '/react', component: ReactFunctionalComponent },
+  { name: 'react.angular.react.angular', url: '/angular', component: 'angularComponent2' },
 
   { name: 'angular', url: '/angular', component: 'angularComponent' },
-  { name: 'angular.react', url: '/react', component: ReactFunctionalComponent },
-  { name: 'angular.react.angular', url: '/angular', component: 'angularComponent' },
+  { name: 'angular.react', url: '/react', component: ReactComponent },
+  { name: 'angular.react.angular', url: '/angular', component: 'angularComponent2' },
   { name: 'angular.react.angular.react', url: '/react', component: ReactFunctionalComponent },
 
   {
-    name: 'angularComponentProvider',
-    url: '/angularComponentProvider/:component',
-    componentProvider: ['$stateParams', $stateParams => $stateParams.component],
+    name: 'componentProvider',
+    url: '/componentProvider/:component',
+    componentProvider: [
+      '$stateParams',
+      $stateParams => {
+        if ($stateParams.component === 'angularComponent' || $stateParams.component === 'angularComponent2') {
+          return $stateParams.component;
+        }
+      },
+    ],
   },
 
   {
