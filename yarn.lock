@@ -110,10 +110,10 @@
     yalc "^1.0.0-pre.34"
     yargs "^15.0.2"
 
-"@uirouter/react@0.8.10":
-  version "0.8.10"
-  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-0.8.10.tgz#d801fafadf07aa0ff5c591f4771dd713a5129021"
-  integrity sha512-vr3f+BWGLOyDzaYb/CVmrNPmJcvE5DYtK4qfggWc8jL75uZoZC2aqTroQkxksBeEgTZ6YHJcSrzbGeqx0mvJmQ==
+"@uirouter/react@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-1.0.0.tgz#dbcf5b2e753a4887c6cc3126e82965b9922e032d"
+  integrity sha512-r/LaPLCkiBkxahISNx7p0a/2Ry8MZ4mlFeYm680aw4hl+cBxeY9ImjScd2mtpj64z4pxTc2+KEXkmu2MarSLeg==
   dependencies:
     "@uirouter/core" "6.0.1"
     classnames "^2.2.5"
