@@ -27,9 +27,5 @@ import { UIRouterContextComponent } from './UIRouterReactContext';
  * @param Component the react component to wrap
  */
 export function UIRouterContext(Component: { new (...args: any[]): React.Component<any, any> }): any {
-  return class extends React.Component<any, any> {
-    public render() {
-      return <UIRouterContextComponent>{React.createElement(Component, this.props)}</UIRouterContextComponent>;
-    }
-  };
+  return props => <UIRouterContextComponent>{React.createElement(Component, props)}</UIRouterContextComponent>;
 }

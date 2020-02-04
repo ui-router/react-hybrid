@@ -1,20 +1,20 @@
-import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
-import { UIRouterConsumer, UIRouterProvider, UIRouterReact, UIViewConsumer, UIViewProvider } from '@uirouter/react';
 import * as angular from 'angular';
 import * as React from 'react';
-import { ReactElement } from 'react';
-import IInjectorService = angular.auto.IInjectorService;
+import { ReactNode, useContext, useRef, useState } from 'react';
+import { UIViewData } from '@uirouter/angularjs/lib/directives/viewDirective';
+import { UIRouterContext, UIViewContext, UIViewAddress } from '@uirouter/react';
+import { UIRouter } from '@uirouter/core';
 
 export interface IUIRouterContextComponentProps {
   parentContextLevel?: string;
   inherited?: boolean;
 }
 
-export interface IUIRouterContextComponentState {
-  ready: boolean;
-  router?: UIRouterReact;
-  parentUIViewAddress?: any;
+interface IContextFromAngularJS {
+  router: UIRouter;
+  addr: UIViewAddress;
 }
+const initialState: IContextFromAngularJS = { router: undefined, addr: undefined };
 
 /**
  * Provide react context necessary for UIView, UISref and UISrefActive
@@ -22,87 +22,60 @@ export interface IUIRouterContextComponentState {
  * Gets the context from the parent react UIView (if component tree is all react)
  * Gets the context from the from parent angular ui-view if no parent reat UIView is available
  */
-export class UIRouterContextComponent extends React.Component<
-  IUIRouterContextComponentProps,
-  IUIRouterContextComponentState
-> {
-  public static defaultProps: Partial<IUIRouterContextComponentProps> = {
-    parentContextLevel: '0',
-    inherited: true,
-  };
+export function UIRouterContextComponent(props: {
+  parentContextLevel: string;
+  inherited: boolean;
+  children: ReactNode;
+}) {
+  const { parentContextLevel, inherited, children } = props;
+  const [contextFromAngularJS, setContextFromAngularJS] = useState(initialState);
+  const routerFromReactContext = useContext(UIRouterContext);
+  const parentUIViewFromReactContext = useContext(UIViewContext);
+  const domRef = useRef(null);
 
-  public state: IUIRouterContextComponentState = {
-    ready: false,
-    router: null,
-    parentUIViewAddress: null,
-  };
+  // Once we have a DOM node, get the AngularJS injector and walk up the DOM to find the AngularJS $uiView
+  const refCallback = (el: HTMLElement) => {
+    if (el && el !== domRef.current) {
+      domRef.current = el;
+      const injector = angular.element(el).injector();
 
-  private ref: HTMLElement;
-  private injector: IInjectorService;
+      // get router from angularjs
+      const router = injector?.get('$uiRouter');
 
-  private getRouterFromAngularJS(): UIRouterReact {
-    if (this.injector) return this.injector.get('$uiRouter');
-  }
+      // get parent uiview from angularjs
+      let steps = parseInt(parentContextLevel, 10);
+      steps = isNaN(steps) ? 0 : steps;
 
-  private getParentViewFromAngularJS() {
-    let ref = this.ref;
-    let steps = parseInt(this.props.parentContextLevel);
-    steps = isNaN(steps) ? 0 : steps;
+      while (el && steps--) el = el.parentElement;
+      const $uiView = el && angular.element(el).inheritedData('$uiView');
+      const addr = $uiView && new ParentUIViewAddressAdapter($uiView);
 
-    while (ref && steps--) ref = ref.parentElement;
-    const $uiView = ref && angular.element(ref).inheritedData('$uiView');
-    return $uiView && new ParentUIViewAddressAdapter($uiView);
-  }
-
-  public componentDidMount() {
-    this.setState({
-      parentUIViewAddress: this.getParentViewFromAngularJS(),
-    });
-  }
-
-  private refCallback = (ref: HTMLElement) => {
-    if (ref && ref !== this.ref) {
-      this.ref = ref;
-      this.injector = angular.element(ref).injector();
-      const router = this.getRouterFromAngularJS();
-      const parentUIViewAddress = this.getParentViewFromAngularJS();
-      this.setState({ ready: true, router, parentUIViewAddress });
-      // console.log(ref);
+      setContextFromAngularJS({ router, addr } as IContextFromAngularJS);
     }
   };
 
-  private renderChild(child: ReactElement<any>) {
-    // console.log('renderChild()', child);
-    const inherited = this.props.inherited;
-    return (
-      <UIRouterConsumer>
-        {routerFromReactContext => (
-          <UIRouterProvider value={inherited && routerFromReactContext || this.state.router}>
-            <UIViewConsumer>
-              {parentUIViewFromReactContext => (
-                <UIViewProvider value={inherited && parentUIViewFromReactContext || this.state.parentUIViewAddress}>
-                  {child}
-                </UIViewProvider>
-              )}
-            </UIViewConsumer>
-          </UIRouterProvider>
-        )}
-      </UIRouterConsumer>
-    );
+  // render a div once to get a ref into the dom
+  // Use the dom ref to access the AngularJS state
+  if (!domRef.current) {
+    return <div ref={refCallback} />;
   }
 
-  public render() {
-    const { ready } = this.state;
-    const { children } = this.props;
+  // We know the AngularJS state. Now render the {children}
+  const childrenCount = React.Children.count(children);
 
-    const childrenCount = React.Children.count(children);
-    if (!ready) {
-      return <div ref={this.refCallback} />;
-    }
-
-    return this.renderChild(childrenCount === 1 ? React.Children.only(children) : <div>{children}</div>);
-  }
+  return (
+    <UIRouterContext.Provider value={(inherited && routerFromReactContext) || contextFromAngularJS.router}>
+      <UIViewContext.Provider value={(inherited && parentUIViewFromReactContext) || contextFromAngularJS.addr}>
+        {childrenCount === 1 ? React.Children.only(children) : <div>{children}</div>}
+      </UIViewContext.Provider>
+    </UIRouterContext.Provider>
+  );
 }
+
+UIRouterContextComponent.defaultProps = {
+  parentContextLevel: '0',
+  inherited: true,
+} as IUIRouterContextComponentProps;
 
 /**
  * Get the fqn and context from the parent angularjs ui-view.
