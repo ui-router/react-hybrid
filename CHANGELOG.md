@@ -1,3 +1,99 @@
+# 1.0.0 (2020-02-04)
+[Compare `@uirouter/react-hybrid` versions 0.3.12 and 1.0.0](https://github.com/ui-router/react-hybrid/compare/0.3.12...1.0.0)
+
+### Code Refactoring
+
+* Migrate to uirouter/react 1.x hooks ([05549af](https://github.com/ui-router/react-hybrid/commit/05549af))
+
+
+### BREAKING CHANGES
+
+* Requires uirouter/react 1.0.0 or higher
+
+
+---
+
+
+### Updated `@uirouter/core` from 6.0.1 to 6.0.4
+
+
+Changelog for `@uirouter/core`:
+
+
+[Compare `@uirouter/core` versions 6.0.1 and 6.0.4](https://github.com/ui-router/core/compare/6.0.1...6.0.4)
+
+### Bug Fixes
+
+* **hof:** Rewrite curry from scratch ([fc324c6](https://github.com/ui-router/core/commit/fc324c6)), closes [#350](https://github.com/ui-router/core/issues/350)
+* **IE9:** Add safeConsole so IE9 doesn't break ([9c8579d](https://github.com/ui-router/core/commit/9c8579d))
+* **safeConsole:** check if document is defined to avoid issues in node environments ([da29d88](https://github.com/ui-router/core/commit/da29d88))
+
+
+### Features
+
+* **stateService:** add transition option 'supercede' so transition can be ignored if one is pending ([6e5a56f](https://github.com/ui-router/core/commit/6e5a56f))
+
+
+---
+
+
+### Updated `@uirouter/react` from 0.8.10 to 1.0.1
+
+
+Changelog for `@uirouter/react`:
+
+
+[Compare `@uirouter/react` versions 0.8.10 and 1.0.1](https://github.com/ui-router/react/compare/0.8.10...1.0.1)
+
+### Bug Fixes
+
+* **<UIRouter/>:** Fix router initialization when a router prop is present ([dbce860](https://github.com/ui-router/react/commit/dbce860))
+* **errors:** Always throw a new Error() so stacktraces are usable ([26f6989](https://github.com/ui-router/react/commit/26f6989))
+* **typescript:** Type onClick as MouseEventHandler<any>. ([7512f14](https://github.com/ui-router/react/commit/7512f14))
+* **uiCanExit:** fix uiCanExit logic and use refs so hook de/registration happens outside any render ([e73daa7](https://github.com/ui-router/react/commit/e73daa7))
+* **UISrefActive:** Avoid reusing the same array reference during setState() call ([b9064cd](https://github.com/ui-router/react/commit/b9064cd))
+* **useCurrentStateAndParams:** deregister transition hook when unmounted ([ba397a6](https://github.com/ui-router/react/commit/ba397a6))
+* **useIsActive:** Support relative state names ([311f1f3](https://github.com/ui-router/react/commit/311f1f3))
+* **useIsActive:** Update isActive if the params have changed ([b3efe35](https://github.com/ui-router/react/commit/b3efe35))
+* **useSref:** Call go() with the actual user provided state string ([fba5321](https://github.com/ui-router/react/commit/fba5321))
+* **useSref:** Recompute the targeted state (and hrefs) whenever states are added or removed from the state registry ([4c6b0f0](https://github.com/ui-router/react/commit/4c6b0f0))
+* **useSref:** Update href if the stateName or params have changed ([be8e07f](https://github.com/ui-router/react/commit/be8e07f))
+* **useSref:** Use optionsMemo and paramsMemo instead of the function arguments ([81ae788](https://github.com/ui-router/react/commit/81ae788))
+* **useSrefActive:** Export useSrefActive and useSrefActiveExact ([d317790](https://github.com/ui-router/react/commit/d317790))
+* **useStableCallback:** update ref.current and fix test ([ec4ce5d](https://github.com/ui-router/react/commit/ec4ce5d))
+* **useTransitionHook:** update hook when options or criteria changes. Use a stable callback reference. ([57e593e](https://github.com/ui-router/react/commit/57e593e))
+* Refactor UIView for compatibility with [@uirouter](https://github.com/uirouter)/react-hybrid. ([55d4c98](https://github.com/ui-router/react/commit/55d4c98))
+* Restore UIRouterConsumer and UIViewConsumer context consumer components. ([3ed8ce1](https://github.com/ui-router/react/commit/3ed8ce1))
+* **useUiSref:** Throw if 'to' isnt a string ([65f10e5](https://github.com/ui-router/react/commit/65f10e5))
+
+
+### Features
+
+* **hooks:** Add hooks: useTransitionHook, useOnStateChanged, useCurrentStateAndParams ([00e6545](https://github.com/ui-router/react/commit/00e6545))
+* **hooks:** Add useCanExit hook to block transitions from exiting a state ([29d080c](https://github.com/ui-router/react/commit/29d080c))
+* **hooks:** Add useDeepObjectDiff hook to detect changes to params or config objects in other hooks ([07f3182](https://github.com/ui-router/react/commit/07f3182))
+* **hooks:** Add useSrefActive and useSrefActiveExact hooks ([2b5826f](https://github.com/ui-router/react/commit/2b5826f))
+* **hooks:** add useUIRouter and useCurrentState hooks ([bce6539](https://github.com/ui-router/react/commit/bce6539))
+* **hooks:** export useParentView for use in uirouter/react-hybrid ([b5a2e80](https://github.com/ui-router/react/commit/b5a2e80))
+* **ReactHooks:** introduce hooks useUISref and useUISrefActive ([b9a763c](https://github.com/ui-router/react/commit/b9a763c))
+
+
+### BREAKING CHANGES
+
+* UIRouterConsumer now is of type `import { UIRouter } from '@uirouter/core'` instead of `import { UIRouterReact } from '@uirouter/react'`
+
+
+---
+
+
+### Updated `@uirouter/angularjs` from 1.0.23 to 1.0.25
+
+
+Changelog for `@uirouter/angularjs`:
+
+
+[Compare `@uirouter/angularjs` versions 1.0.23 and 1.0.25](https://github.com/angular-ui/ui-router/compare/1.0.23...1.0.25)
+
 ## 0.3.12 (2019-10-26)
 [Compare `@uirouter/react-hybrid` versions 0.3.11 and 0.3.12](https://github.com/ui-router/react-hybrid/compare/0.3.11...0.3.12)
 
