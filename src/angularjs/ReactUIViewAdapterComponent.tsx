@@ -42,6 +42,7 @@ hybridModule.directive('reactUiViewAdapter', function() {
       debug('.link()', 'linking react-ui-view-adapter into ', el, attrs);
 
       // The UIView ref callback, which is called after the initial render
+      // the ref value will be the component instance
       const ref = (ref: HTMLElement) => {
         // If refs are the same - don't re-render React component.
         const isSameRef = ref && _ref === ref;
@@ -73,8 +74,8 @@ hybridModule.directive('reactUiViewAdapter', function() {
       };
 
       const provideContextToAngularJSChildren = () => {
-        const $cfg = _ref && _ref.uiViewData && _ref.uiViewData.config;
-        const $uiView = _ref && _ref.uiViewAddress;
+        const $cfg = _ref?.uiViewData?.config;
+        const $uiView = _ref?.uiViewAddress;
 
         debug('.provideContextToAngularJSChildren', '', el, $cfg, $uiView);
 
