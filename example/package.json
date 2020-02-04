@@ -6,8 +6,8 @@
     "@uirouter/visualizer": "6.0.0",
     "angular": "1.7.0",
     "prop-types": "15.6.1",
-    "react": "~16.4.0",
-    "react-dom": "~16.4.0"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   },
   "devDependencies": {
     "@uirouter/cypress-runner": "^1.0.7",
