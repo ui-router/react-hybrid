@@ -1,3 +1,22 @@
+## 1.0.1 (2020-02-24)
+[Compare `@uirouter/react-hybrid` versions 1.0.0 and 1.0.1](https://github.com/ui-router/react-hybrid/compare/1.0.0...1.0.1)
+
+
+---
+
+
+### Updated `@uirouter/react` from 1.0.1 to 1.0.2
+
+
+Changelog for `@uirouter/react`:
+
+
+[Compare `@uirouter/react` versions 1.0.1 and 1.0.2](https://github.com/ui-router/react/compare/1.0.1...1.0.2)
+
+### Bug Fixes
+
+* Only run initialization effect on first render ([7788a98](https://github.com/ui-router/react/commit/7788a98))
+
 # 1.0.0 (2020-02-04)
 [Compare `@uirouter/react-hybrid` versions 0.3.12 and 1.0.0](https://github.com/ui-router/react-hybrid/compare/0.3.12...1.0.0)
 
