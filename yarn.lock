@@ -137,10 +137,10 @@
     yalc "^1.0.0-pre.34"
     yargs "^15.0.2"
 
-"@uirouter/react@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-1.0.1.tgz#885011c77a20ac5921f9fa8461ec0c27e7f21cc6"
-  integrity sha512-fWWMGB6U1xJNStltUUZ+ENKEnYrqwXpOoJZj9jWgZnP0NXGbhRt+vHrVJPqc4VMwlpemNpkIjn+vO3KNG00ZWA==
+"@uirouter/react@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-1.0.2.tgz#a3690ff0435e7e57c1d0528038ccf9ef5ab74a0d"
+  integrity sha512-PCKSuT2HOzE5Ub/QQ1N4hugL9hFJFnZjgp2vzjZRzfoqKwsFyCcU8PgQ5j3intqcbUqX4FR0ethXm0BZIfKsNA==
   dependencies:
     "@uirouter/core" "6.0.4"
     classnames "^2.2.5"
@@ -2219,10 +2219,15 @@ typedoc@0.15.6:
     typedoc-default-themes "^0.6.3"
     typescript "3.7.x"
 
-typescript@3.7.x, typescript@^3.7.5:
+typescript@3.7.x:
   version "3.7.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
   integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
+
+typescript@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.2.tgz#91d6868aaead7da74f493c553aeff76c0c0b1d5a"
+  integrity sha512-EgOVgL/4xfVrCMbhYKUQTdF37SQn4Iw73H5BgCrF1Abdun7Kwy/QZsE/ssAy0y4LxBbvua3PIbFsbRczWWnDdQ==
 
 uglify-js@^3.1.4, uglify-js@^3.4.9:
   version "3.4.9"
