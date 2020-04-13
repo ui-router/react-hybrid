@@ -29,7 +29,7 @@
     "@types/react": "^16.9.32",
     "@uirouter/publish-scripts": "^2.3.45",
     "angular": "^1.7.9",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "react": "^16.13.1",
