@@ -26,7 +26,7 @@
   "devDependencies": {
     "@types/angular": "^1.7.0",
     "@types/jquery": "^3.3.34",
-    "@types/react": "^16.9.27",
+    "@types/react": "^16.9.32",
     "@uirouter/publish-scripts": "^2.3.45",
     "angular": "^1.7.9",
     "husky": "^4.2.5",
