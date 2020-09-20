@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@uirouter/angularjs": "1.0.26",
-    "@uirouter/core": "6.0.5",
+    "@uirouter/core": "6.0.6",
     "@uirouter/react": "1.0.3"
   },
   "peerDependencies": {
