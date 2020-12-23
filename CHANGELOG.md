@@ -1,3 +1,57 @@
+## 1.0.3 (2020-12-23)
+[Compare `@uirouter/react-hybrid` versions 1.0.2 and 1.0.3](https://github.com/ui-router/react-hybrid/compare/1.0.2...1.0.3)
+
+---
+
+
+### Updated `@uirouter/core` from 6.0.5 to 6.0.7
+
+
+Changelog for `@uirouter/core`:
+
+
+[Compare `@uirouter/core` versions 6.0.5 and 6.0.7](https://github.com/ui-router/core/compare/6.0.5...6.0.7)
+
+### Bug Fixes
+
+* **array:** Fix decoding of array-type query parameters ([44ebfae](https://github.com/ui-router/core/commit/44ebfae))
+* **params:** Bi-directionally en/decode path and search params. ([#618](https://github.com/ui-router/core/issues/618)) ([89e99cd](https://github.com/ui-router/core/commit/89e99cd))
+
+
+
+---
+
+
+### Updated `@uirouter/react` from 1.0.3 to 1.0.6
+
+
+Changelog for `@uirouter/react`:
+
+
+[Compare `@uirouter/react` versions 1.0.3 and 1.0.6](https://github.com/ui-router/react/compare/1.0.3...1.0.6)
+
+### Bug Fixes
+
+* **sref:** do not handle clicks if the dom element has a 'target' attribute ([#799](https://github.com/ui-router/react/issues/799)) ([a13b3cd](https://github.com/ui-router/react/commit/a13b3cd)), closes [#786](https://github.com/ui-router/react/issues/786)
+
+
+---
+
+
+### Updated `@uirouter/angularjs` from 1.0.26 to 1.0.29
+
+
+Changelog for `@uirouter/angularjs`:
+
+
+[Compare `@uirouter/angularjs` versions 1.0.26 and 1.0.29](https://github.com/angular-ui/ui-router/compare/1.0.26...1.0.29)
+
+### Bug Fixes
+
+* should not transition states when alt-clicked ([8080adb](https://github.com/angular-ui/ui-router/commit/8080adb))
+* make augmented StateRegistry.register overload better match the signature in core ([db4e63f](https://github.com/angular-ui/ui-router/commit/db4e63f))
+
+
 ## 1.0.2 (2020-04-29)
 [Compare `@uirouter/react-hybrid` versions 1.0.1 and 1.0.2](https://github.com/ui-router/react-hybrid/compare/1.0.1...1.0.2)
 
