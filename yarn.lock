@@ -109,17 +109,17 @@
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
   integrity sha512-7EJYyKTL7tFR8+gDbB6Wwz/arpGa0Mywk1TJbNzKzHtzbwVmY4HR9WqS5VV7dsBUKQmPNr192jHr/VpBluj/hg==
 
-"@uirouter/angularjs@1.0.26":
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.26.tgz#680ba48ac2c5608a6621c09fadb88a80ceb2e0cc"
-  integrity sha512-90kS4j0cBk1rpipE/CFC+/cNpc32WHI5536oHsJzAOIDY1NoSmb5TMOISrJslg7sBGF56NEtGoRVf42gaACrfA==
+"@uirouter/angularjs@1.0.29":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.29.tgz#e1a88cb323b664ee3fdc6242931383fcc7e2152f"
+  integrity sha512-RImWnBarNixkMto0o8stEaGwZmvhv5cnuOLXyMU2pY8MP2rgEF74ZNJTLeJCW14LR7XDUxVH8Mk8bPI6lxedmQ==
   dependencies:
-    "@uirouter/core" "6.0.5"
+    "@uirouter/core" "6.0.7"
 
-"@uirouter/core@6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-6.0.5.tgz#60f13fd530fc75daa283e2bece944516559d066b"
-  integrity sha512-WN2HyELsxvqLaCMYCWojGW/QLRBgFBfwyERp5jC3Vn1njo/FLI5hplVqWMu6LIGp6Hpz3pbdtSaiFb1iY7iTVw==
+"@uirouter/core@6.0.7":
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-6.0.7.tgz#a66743dceb13a56d8908474ff891d63e5d5a2b01"
+  integrity sha512-KUTJxL+6q0PiBnFx4/Z+Hsyg0pSGiaW5yZQeJmUxknecjpTbnXkLU8H2EqRn9N2B+qDRa7Jg8RcgeNDPY72O1w==
 
 "@uirouter/publish-scripts@^2.5.4":
   version "2.5.4"
@@ -143,12 +143,12 @@
     yalc "^1.0.0-pre.35"
     yargs "^15.3.1"
 
-"@uirouter/react@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-1.0.3.tgz#fbfa63e9aa6ad8444198754ef732e63c187d44ed"
-  integrity sha512-LTZK2BFapYTTjAVOc1mQF1mSeC5v++SNzOizhGNn//0npjzbhzy4qSt0EsFwlDtIkuZscVMsxBVNBRxnuy6G/Q==
+"@uirouter/react@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@uirouter/react/-/react-1.0.6.tgz#c45f5aa06b6136a2beb26a0229a931a86da2d6ec"
+  integrity sha512-/14Q7wPs9RyiJ0ubwzs4KELebSG35e/YgsdRBJqtyNrPRWuJqiPO1pR8qG71/rNCtCsqQgVr14sUNIXS0GOSCQ==
   dependencies:
-    "@uirouter/core" "6.0.5"
+    "@uirouter/core" "6.0.7"
     classnames "^2.2.5"
     prop-types "^15.6.1"
 
