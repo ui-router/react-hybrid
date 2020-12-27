@@ -27,7 +27,7 @@
     "@types/angular": "^1.7.2",
     "@types/jquery": "^3.5.5",
     "@types/react": "^16.9.43",
-    "@uirouter/publish-scripts": "^2.5.4",
+    "@uirouter/publish-scripts": "^2.5.5",
     "angular": "^1.8.0",
     "husky": "^4.3.6",
     "prettier": "^2.2.1",
