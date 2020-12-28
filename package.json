@@ -32,7 +32,7 @@
     "husky": "^4.3.6",
     "prettier": "^2.2.1",
     "pretty-quick": "^2.0.1",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^10.1.0",
