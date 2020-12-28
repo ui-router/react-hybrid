@@ -24,7 +24,7 @@
     "react": ">=15.0.0"
   },
   "devDependencies": {
-    "@types/angular": "^1.7.2",
+    "@types/angular": "^1.8.0",
     "@types/jquery": "^3.5.5",
     "@types/react": "^16.9.43",
     "@uirouter/publish-scripts": "^2.5.5",
