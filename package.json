@@ -11,7 +11,8 @@
     "test": "npm run build",
     "test:downstream": "test_downstream_projects",
     "prepublishOnly": "npm run build",
-    "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs"
+    "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs",
+    "prepare": "husky install"
   },
   "license": "MIT",
   "dependencies": {
@@ -29,7 +30,7 @@
     "@types/react": "^16.9.43",
     "@uirouter/publish-scripts": "^2.5.5",
     "angular": "^1.8.2",
-    "husky": "^4.3.8",
+    "husky": "^6.0.0",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "react": "^16.14.0",
@@ -47,10 +48,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ui-router/react-hybrid.git"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }
