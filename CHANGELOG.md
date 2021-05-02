@@ -1,3 +1,10 @@
+## 1.0.4 (2021-05-02)
+[Compare `@uirouter/react-hybrid` versions 1.0.3 and 1.0.4](https://github.com/ui-router/react-hybrid/compare/1.0.3...1.0.4)
+
+### Bug Fixes
+
+* **UIRouterContextComponent:** Handle array of length 1 ([#526](https://github.com/ui-router/react-hybrid/issues/526)) ([925f816](https://github.com/ui-router/react-hybrid/commit/925f816))
+
 ## 1.0.3 (2020-12-23)
 [Compare `@uirouter/react-hybrid` versions 1.0.2 and 1.0.3](https://github.com/ui-router/react-hybrid/compare/1.0.2...1.0.3)
 
