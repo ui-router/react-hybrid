@@ -40,7 +40,7 @@
     "rollup": "^2.55.1",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^3.9.7"
+    "typescript": "^4.3.5"
   },
   "main": "_bundles/ui-router-react-hybrid.js",
   "module": "lib-esm/index.js",
