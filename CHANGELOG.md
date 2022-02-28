@@ -1,3 +1,22 @@
+## 1.0.5 (2022-02-28)
+[Compare `@uirouter/react-hybrid` versions 1.0.4 and 1.0.5](https://github.com/ui-router/react-hybrid/compare/1.0.4...1.0.5)
+
+
+---
+
+
+### Updated `@uirouter/react` from 1.0.6 to 1.0.7
+
+
+Changelog for `@uirouter/react`:
+
+
+[Compare `@uirouter/react` versions 1.0.6 and 1.0.7](https://github.com/ui-router/react/compare/1.0.6...1.0.7)
+
+### Bug Fixes
+
+* update classnames library which has default export type ([#939](https://github.com/ui-router/react/issues/939)) ([c771405](https://github.com/ui-router/react/commit/c771405))
+
 ## 1.0.4 (2021-05-02)
 [Compare `@uirouter/react-hybrid` versions 1.0.3 and 1.0.4](https://github.com/ui-router/react-hybrid/compare/1.0.3...1.0.4)
 
