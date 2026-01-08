@@ -47,6 +47,18 @@
   "main": "_bundles/ui-router-react-hybrid.js",
   "module": "lib-esm/index.js",
   "typings": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib-esm/index.js",
+      "require": "./_bundles/ui-router-react-hybrid.js"
+    },
+    "./legacy": {
+      "types": "./lib/legacy.d.ts",
+      "import": "./lib-esm/legacy.js",
+      "require": "./_bundles/ui-router-react-hybrid-legacy.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ui-router/react-hybrid.git"

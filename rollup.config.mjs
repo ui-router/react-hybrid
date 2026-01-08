@@ -46,6 +46,7 @@ function isExternal(id) {
     '@uirouter/react',
     'react',
     'react-dom',
+    'react-dom/client',
     'prop-types',
     'angular',
   ];
@@ -61,7 +62,19 @@ function isExternal(id) {
   return regexps.map((regex) => regex.exec(id)).reduce((acc, val) => acc || !!val, false);
 }
 
-const CONFIG = {
+const globals = {
+  '@uirouter/angularjs': '@uirouter/angularjs',
+  '@uirouter/react': '@uirouter/react',
+  '@uirouter/core': '@uirouter/core',
+  angular: 'angular',
+  react: 'React',
+  'react-dom': 'ReactDOM',
+  'react-dom/client': 'ReactDOM',
+  'prop-types': 'PropTypes',
+};
+
+// Main entry point (React 18+)
+const mainConfig = {
   input: 'lib-esm/index.js',
   output: {
     name: '@uirouter/react-hybrid',
@@ -70,20 +83,28 @@ const CONFIG = {
     format: 'umd',
     banner: banner,
     exports: 'named',
-    globals: {
-      '@uirouter/angularjs': '@uirouter/angularjs',
-      '@uirouter/react': '@uirouter/react',
-      '@uirouter/core': '@uirouter/core',
-      angular: 'angular',
-      react: 'React',
-      'react-dom': 'ReactDOM',
-      'prop-types': 'PropTypes',
-    },
+    globals,
   },
-
   plugins: plugins,
   onwarn: onwarn,
   external: isExternal,
 };
 
-export default CONFIG;
+// Legacy entry point (React 16/17)
+const legacyConfig = {
+  input: 'lib-esm/legacy.js',
+  output: {
+    name: '@uirouter/react-hybrid',
+    file: '_bundles/ui-router-react-hybrid-legacy' + extension,
+    sourcemap: true,
+    format: 'umd',
+    banner: banner,
+    exports: 'named',
+    globals,
+  },
+  plugins: plugins,
+  onwarn: onwarn,
+  external: isExternal,
+};
+
+export default [mainConfig, legacyConfig];

@@ -18,5 +18,5 @@
     "noImplicitAny": false,
     "skipLibCheck": true
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts", "src/legacy.ts"]
 }

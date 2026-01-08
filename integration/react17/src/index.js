@@ -1,7 +1,7 @@
 import angular from 'angular';
 import * as React from 'react';
 
-import { UI_ROUTER_REACT_HYBRID } from '@uirouter/react-hybrid';
+import { UI_ROUTER_REACT_HYBRID } from '@uirouter/react-hybrid/legacy';
 import { Visualizer } from '@uirouter/visualizer';
 import { ReactComponent } from './ReactComponent';
 import { ReactFunctionalComponent } from './ReactFunctionalComponent';
