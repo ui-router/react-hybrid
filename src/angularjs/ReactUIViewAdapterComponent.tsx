@@ -7,11 +7,20 @@ import { ReactUIView } from '../react/ReactUIView';
 import { hybridModule } from './module';
 import { debugLog } from '../debug';
 
+// React 18+ createRoot API support
+let createRoot: typeof import('react-dom/client').createRoot | undefined;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  createRoot = require('react-dom/client').createRoot;
+} catch (e) {
+  // React 17 or earlier - createRoot not available
+}
+
 // When an angularjs `ui-view` is instantiated, also create an react-ui-view-adapter (which creates a react UIView)
-hybridModule.directive('uiView', function() {
+hybridModule.directive('uiView', function () {
   return {
     restrict: 'AE',
-    compile: function(tElem, tAttrs) {
+    compile: function (tElem, tAttrs) {
       let { name, uiView } = tAttrs;
       name = name || uiView || '$default';
       debugLog('angularjs', 'ui-view', '?', '.compile()', 'Creating react-ui-view-adapter', tElem);
@@ -25,16 +34,17 @@ var id = 0;
 // This angularjs adapter (inside an angularjs ui-view) creates the react UIView and provides it the correct context
 // It also allows angularjs children created inside the react view (via angular2react or whatever) to access the correct
 // context from the react UIView
-hybridModule.directive('reactUiViewAdapter', function() {
+hybridModule.directive('reactUiViewAdapter', function () {
   return {
     restrict: 'E',
-    link: function(scope: IPortalScope, elem, attrs) {
+    link: function (scope: IPortalScope, elem, attrs) {
       const debug = (method: string, message: string, ...args) =>
         debugLog('angularjs', 'react-ui-view-adapter', `${$id}/${attrs.name}`, method, message, ...args);
 
       const el = elem[0];
       let _ref = null;
       let destroyed = false;
+      let root: ReturnType<typeof createRoot> | null = null;
       const $id = id++;
       const ignoredAttrKeys = ['$$element', '$attr'];
       attrs = filter(attrs, (val, key) => ignoredAttrKeys.indexOf(key) === -1) as any;
@@ -99,8 +109,19 @@ hybridModule.directive('reactUiViewAdapter', function() {
           debug('.renderReactUIView()', `will createPortalToChildUIView({ name: '${childUIViewProps['name']}' })`, el);
           portalView.createPortalToChildUIView($id, { childUIViewProps, portalTarget: el });
         } else {
-          debug('.renderReactUIView()', `ReactDOM.render(<ReactUIView name="${childUIViewProps['name']}"/>)`, el);
-          ReactDOM.render<any>(<ReactUIView {...childUIViewProps} />, el as any);
+          debug('.renderReactUIView()', `rendering <ReactUIView name="${childUIViewProps['name']}"/>`, el);
+          const element = <ReactUIView {...childUIViewProps} />;
+
+          if (createRoot) {
+            // React 18+ API
+            if (!root) {
+              root = createRoot(el);
+            }
+            root.render(element);
+          } else {
+            // React 17 and earlier (legacy API)
+            ReactDOM.render<any>(element, el as any);
+          }
         }
       }
 
@@ -110,8 +131,15 @@ hybridModule.directive('reactUiViewAdapter', function() {
         if (portalView) {
           portalView.removePortalToChildUIView($id);
         } else {
-          const unmounted = ReactDOM.unmountComponentAtNode(el);
-          debug('.$on("$destroy")', `unmountComponentAtNode(): ${unmounted}`, el);
+          if (root) {
+            // React 18+ API
+            root.unmount();
+            debug('.$on("$destroy")', `root.unmount()`, el);
+          } else {
+            // React 17 and earlier (legacy API)
+            const unmounted = ReactDOM.unmountComponentAtNode(el);
+            debug('.$on("$destroy")', `unmountComponentAtNode(): ${unmounted}`, el);
+          }
         }
         // Remove using jQLite element for cross-browser compatibility.
         elem.remove();

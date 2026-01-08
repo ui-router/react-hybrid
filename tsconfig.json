@@ -16,9 +16,7 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "skipLibCheck": true,
-    "suppressExcessPropertyErrors": true,
-    "suppressImplicitAnyIndexErrors": true
+    "skipLibCheck": true
   },
-  "files": [ "src/index.ts" ]
+  "files": ["src/index.ts"]
 }

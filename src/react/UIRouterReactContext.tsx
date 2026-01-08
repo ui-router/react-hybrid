@@ -8,6 +8,7 @@ import { UIRouter } from '@uirouter/core';
 export interface IUIRouterContextComponentProps {
   parentContextLevel?: string;
   inherited?: boolean;
+  children: ReactNode;
 }
 
 interface IContextFromAngularJS {
@@ -22,12 +23,11 @@ const initialState: IContextFromAngularJS = { router: undefined, addr: undefined
  * Gets the context from the parent react UIView (if component tree is all react)
  * Gets the context from the from parent angular ui-view if no parent reat UIView is available
  */
-export function UIRouterContextComponent(props: {
-  parentContextLevel: string;
-  inherited: boolean;
-  children: ReactNode;
-}) {
-  const { parentContextLevel, inherited, children } = props;
+export function UIRouterContextComponent({
+  parentContextLevel = '0',
+  inherited = true,
+  children,
+}: IUIRouterContextComponentProps) {
   const [contextFromAngularJS, setContextFromAngularJS] = useState(initialState);
   const routerFromReactContext = useContext(UIRouterContext);
   const parentUIViewFromReactContext = useContext(UIViewContext);
@@ -72,11 +72,6 @@ export function UIRouterContextComponent(props: {
     </UIRouterContext.Provider>
   );
 }
-
-UIRouterContextComponent.defaultProps = {
-  parentContextLevel: '0',
-  inherited: true,
-} as IUIRouterContextComponentProps;
 
 /**
  * Get the fqn and context from the parent angularjs ui-view.
