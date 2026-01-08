@@ -1,3 +1,8 @@
 {
-  "example": "./example"
+  "integration": {
+    "react16": "./integration/react16",
+    "react17": "./integration/react17",
+    "react18": "./integration/react18",
+    "react19": "./integration/react19"
+  }
 }

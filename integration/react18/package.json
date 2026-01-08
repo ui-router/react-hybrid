@@ -1,6 +1,6 @@
 {
-  "name": "ui-router-react-hybrid-example",
-  "description": "Example app for @uirouter/react-hybrid",
+  "name": "ui-router-react-hybrid-react18",
+  "description": "Integration test for @uirouter/react-hybrid with React 18",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
