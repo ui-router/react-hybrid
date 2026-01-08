@@ -1,0 +1,25 @@
+{
+  "name": "ui-router-react-hybrid-react18",
+  "description": "Integration test for @uirouter/react-hybrid with React 18",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@uirouter/react-hybrid": "latest",
+    "@uirouter/visualizer": "^7.2.1",
+    "angular": "1.7.0",
+    "prop-types": "15.6.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@rspack/cli": "^1.0.0",
+    "@rspack/core": "^1.0.0",
+    "serve": "^14.2.0"
+  },
+  "scripts": {
+    "start": "rspack serve --mode development",
+    "build": "rspack build --mode production",
+    "test": "npm run build && npx playwright install chromium && npx playwright test"
+  }
+}

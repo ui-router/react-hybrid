@@ -1,6 +1,6 @@
 {
   "name": "@uirouter/react-hybrid",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "scripts": {
     "clean": "shx rm -rf lib lib-esm _bundles",
     "compile": "npm run clean && tsc && tsc --module es6 --outDir lib-esm",
@@ -12,39 +12,53 @@
     "test:downstream": "test_downstream_projects",
     "prepublishOnly": "npm run build",
     "release": "release --deps @uirouter/core @uirouter/react @uirouter/angularjs",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "license": "MIT",
   "dependencies": {
-    "@uirouter/angularjs": "1.0.29",
-    "@uirouter/core": "6.0.7",
-    "@uirouter/react": "1.0.7"
+    "@uirouter/angularjs": "1.1.2",
+    "@uirouter/core": "6.1.2",
+    "@uirouter/react": "1.0.8"
   },
   "peerDependencies": {
     "angular": "^1.5.0",
-    "react": ">=15.0.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^18.0.0",
-    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@types/angular": "^1.8.2",
     "@types/jquery": "^3.5.6",
-    "@types/react": "^16.9.43",
-    "@uirouter/publish-scripts": "^2.5.5",
-    "angular": "^1.8.2",
-    "husky": "^6.0.0",
-    "prettier": "^2.3.2",
-    "pretty-quick": "^3.1.1",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "rollup": "^2.55.1",
-    "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^3.9.7"
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@uirouter/publish-scripts": "^2.7.0",
+    "angular": "^1.8.3",
+    "husky": "^9.1.7",
+    "prettier": "^3.7.4",
+    "pretty-quick": "^4.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^4.55.1",
+    "rollup-plugin-sourcemaps2": "^0.5.4",
+    "typescript": "^5.3.0"
   },
   "main": "_bundles/ui-router-react-hybrid.js",
   "module": "lib-esm/index.js",
   "typings": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib-esm/index.js",
+      "require": "./_bundles/ui-router-react-hybrid.js"
+    },
+    "./legacy": {
+      "types": "./lib/legacy.d.ts",
+      "import": "./lib-esm/legacy.js",
+      "require": "./_bundles/ui-router-react-hybrid-legacy.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ui-router/react-hybrid.git"

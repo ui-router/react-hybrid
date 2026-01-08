@@ -7,3 +7,4 @@ stats.html
 yalc.lock
 .yalc
 yarn-error.log
+!.husky
