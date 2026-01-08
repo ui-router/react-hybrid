@@ -20,6 +20,6 @@
   "scripts": {
     "start": "rspack serve --mode development",
     "build": "rspack build --mode production",
-    "test": "npm run build && npx playwright test"
+    "test": "npm run build && npx playwright install chromium && npx playwright test"
   }
 }
