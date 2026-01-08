@@ -11,13 +11,13 @@ import { ReactAboutComponent } from "./about.component";
 /// ...
 
 $stateProvider.state({
-  name: 'home', 
+  name: 'home',
   url: '/home',
   component: 'ng1HomeComponent' // AngularJS component or directive name
 })
 
 .state({
-  name: 'about', 
+  name: 'about',
   url: '/about',
   component: ReactAboutComponent // React component class reference
 });
@@ -42,59 +42,65 @@ When routing to an AngularJS component or template, that component uses the stan
 Remove `angular-ui-router` (or `@uirouter/angularjs`) from your package.json and replace it with `@uirouter/react-hybrid`.
 Add the `react` and `react-dom` dependencies.
 
-```
-dependencies: {
-  ...
-  "angular": "^1.6.0",
-  "react": "^15.4.0",
-  "react-dom": "^15.4.0",
-   ...
-  "@uirouter/react-hybrid": "^0.0.8",
-  ...
+```json
+{
+  "dependencies": {
+    "angular": "^1.6.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "@uirouter/react-hybrid": "^1.1.0"
+  }
 }
 ```
 
-#### Add AngularJS module for hybrid support
+### Add AngularJS module for hybrid support
+
+Note: This library supports React 16/17/18/19.
+For React 16/17 support, import from `@uirouter/react-hybrid/legacy`.
 
 ```js
+// React 18/19
 import { UI_ROUTER_REACT_HYBRID } from '@uirouter/react-hybrid';
-let ng1module = angular.module("myApp", ['ui.router', UI_ROUTER_REACT_HYBRID]);
+
+// React 16/17
+// import { UI_ROUTER_REACT_HYBRID } from '@uirouter/react-hybrid/legacy';
+
+let ng1module = angular.module('myApp', ['ui.router', UI_ROUTER_REACT_HYBRID]);
 ```
 
-#### Route to AngularJS components/templates
+### Route to AngularJS components/templates
 
 Your existing AngularJS routes work the same as before.
 
-```
-var foo = { 
+```js
+var foo = {
   name: 'foo',
   url: '/foo',
-  component: 'fooComponent'
+  component: 'fooComponent',
 };
 $stateProvider.state(foo);
 
-var bar = { 
+var bar = {
   name: 'foo.bar',
   url: '/bar',
   templateUrl: '/bar.html',
-  controller: 'BarController'
+  controller: 'BarController',
 };
 $stateProvider.state(bar);
 ```
 
-#### Route to React components
+### Route to React components
 
 Use `component:` in your state declaration.
 
-```
-var leaf = { 
+```js
+var leaf = {
   name: 'foo.bar.leaf',
   url: '/leaf',
-  component: MyReactComponentClass
+  component: MyReactComponentClass,
 };
 $stateProvider.state(leaf);
 ```
-
 
 ## How it works
 
@@ -113,11 +119,11 @@ When a state loads an AngularJS view into the AngularJS `<ui-view>`, it replaces
 When a state loads a React Component into the React `<UIView/>` component, it is nested inside the AngularJS components like so:
 
 ```html
-<ui-view> // angularjs
-  <react-ui-view-adapter> // angularjs
-    <UIView> // react
-      <RoutedReactComponent/> //react
-    </UIView>
+<ui-view>
+  // angularjs
+  <react-ui-view-adapter>
+    // angularjs
+    <UIView> // react <RoutedReactComponent /> //react </UIView>
   </react-ui-view-adapter>
 </ui-view>
 ```
@@ -140,4 +146,3 @@ It then provides the state context to its children using React props.
 The `<react-ui-view-adapter>` wraps a React `UIView` component.
 When the react `UIView` is filled by a state's react component, the `react-ui-view-adapter` gets the state context for the newly filled `UIView`.
 It then provides that context to AngularJS components using AngularJS DOM data.
-
