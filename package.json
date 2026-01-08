@@ -16,9 +16,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uirouter/angularjs": "1.0.29",
-    "@uirouter/core": "6.0.7",
-    "@uirouter/react": "1.0.7"
+    "@uirouter/angularjs": "1.1.2",
+    "@uirouter/core": "6.1.2",
+    "@uirouter/react": "1.0.8"
   },
   "peerDependencies": {
     "angular": "^1.5.0",
@@ -34,7 +34,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@uirouter/publish-scripts": "^2.7.0",
-    "angular": "^1.8.2",
+    "angular": "^1.8.3",
     "husky": "^9.1.7",
     "prettier": "^3.7.4",
     "pretty-quick": "^4.2.2",
