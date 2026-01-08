@@ -11,7 +11,7 @@ export interface ReactDOMAdapter {
   unmount: (container: Element) => void;
 }
 
-export function registerReactUIViewAdapter(adapter: ReactDOMAdapter) {
+export function registerReactUIViewAdapter(reactDOMAdapter: ReactDOMAdapter) {
   // When an angularjs `ui-view` is instantiated, also create an react-ui-view-adapter (which creates a react UIView)
   hybridModule.directive('uiView', function () {
     return {
@@ -110,7 +110,7 @@ export function registerReactUIViewAdapter(adapter: ReactDOMAdapter) {
           } else {
             debug('.renderReactUIView()', `rendering <ReactUIView name="${childUIViewProps['name']}"/>`, el);
             const element = <ReactUIView {...childUIViewProps} />;
-            adapter.render(element, el);
+            reactDOMAdapter.render(element, el);
           }
         }
 
@@ -120,7 +120,7 @@ export function registerReactUIViewAdapter(adapter: ReactDOMAdapter) {
           if (portalView) {
             portalView.removePortalToChildUIView($id);
           } else {
-            adapter.unmount(el);
+            reactDOMAdapter.unmount(el);
             debug('.$on("$destroy")', `unmounted`, el);
           }
           // Remove using jQLite element for cross-browser compatibility.
