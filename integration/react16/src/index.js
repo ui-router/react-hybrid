@@ -21,13 +21,13 @@ const states = [
   {
     name: 'angularComponentProvider',
     url: '/angularComponentProvider/:component',
-    componentProvider: ['$stateParams', $stateParams => $stateParams.component],
+    componentProvider: ['$stateParams', ($stateParams) => $stateParams.component],
   },
 
   {
     name: 'reactComponentProvider',
     url: '/reactComponentProvider/:component',
-    component: props => {
+    component: (props) => {
       const componentName = props.transition.params().component;
       if (componentName === 'ReactComponent') {
         return <ReactComponent {...props} />;
@@ -41,8 +41,8 @@ const states = [
 const ngmod = angular.module('app', [UI_ROUTER_REACT_HYBRID]);
 ngmod.config([
   '$uiRouterProvider',
-  $uiRouterProvider => {
-    states.forEach(state => $uiRouterProvider.stateRegistry.register(state));
+  ($uiRouterProvider) => {
+    states.forEach((state) => $uiRouterProvider.stateRegistry.register(state));
     $uiRouterProvider.urlService.rules.initial({ state: 'home' });
     $uiRouterProvider.plugin(Visualizer);
   },
