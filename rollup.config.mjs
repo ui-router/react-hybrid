@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
-import sourcemaps from 'rollup-plugin-sourcemaps';
+import sourcemaps from 'rollup-plugin-sourcemaps2';
 import commonjs from '@rollup/plugin-commonjs';
 
 const require = createRequire(import.meta.url);
