@@ -11,9 +11,11 @@ export interface IReactUIViewProps extends UIViewProps {
 
 export const ReactUIView = ({ refFn, ...props }: IReactUIViewProps) => {
   debugLog('react', 'ReactUIView', `?/${props['name']}`, '.render()', '');
+  // InternalUIView is an internal API that accepts ref, but its types don't expose it
+  const internalProps = { ...props, ref: refFn } as any;
   return (
     <UIRouterContextComponent parentContextLevel="3" inherited={false}>
-      <InternalUIView {...props} ref={refFn as any} />
+      <InternalUIView {...internalProps} />
     </UIRouterContextComponent>
   );
 };
