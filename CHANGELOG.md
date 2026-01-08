@@ -1,3 +1,65 @@
+# 2.0.0 (2026-01-08)
+[Compare `@uirouter/react-hybrid` versions 1.0.5 and 2.0.0](https://github.com/ui-router/react-hybrid/compare/1.0.5...2.0.0)
+
+
+### Features
+
+* add React 18/19 support ([7b6702d](https://github.com/ui-router/react-hybrid/commit/7b6702d))
+
+
+# BREAKING CHANGES
+
+* ship separate entry points for React 16/17 and React 18+ ([4bbe923](https://github.com/ui-router/react-hybrid/commit/4bbe923))
+- React 16/17 users should import from `@uirouter/react-hybrid/legacy`
+
+
+---
+
+
+### Updated `@uirouter/core` from 6.0.7 to 6.1.2
+
+
+Changelog for `@uirouter/core`:
+
+
+[Compare `@uirouter/core` versions 6.0.7 and 6.1.2](https://github.com/ui-router/core/compare/6.0.7...6.1.2)
+
+### Bug Fixes
+
+* **angular-compiler:** remove index.metadata.json from uirouter core, ([37b5ebe](https://github.com/ui-router/core/commit/37b5ebe))
+* **stateParams:** $inherit is not affected by enumerable prototype custom methods ([#841](https://github.com/ui-router/core/issues/841)) ([9c94c2a](https://github.com/ui-router/core/commit/9c94c2a))
+* **stateService:** make sure `$state.href` (and by extension `uiSref`) handle `inherit: false` ([#834](https://github.com/ui-router/core/issues/834)) ([12cd951](https://github.com/ui-router/core/commit/12cd951)), closes [/github.com/ui-router/core/pull/834#issuecomment-1379019917](https://github.com//github.com/ui-router/core/pull/834/issues/issuecomment-1379019917) [/github.com/ui-router/core/pull/834#issuecomment-1379195131](https://github.com//github.com/ui-router/core/pull/834/issues/issuecomment-1379195131)
+* **urlMatcher:** Fix potential ReDoS, thanks to www.HeroDevs.com ([0c00a12](https://github.com/ui-router/core/commit/0c00a12))
+
+
+---
+
+
+### Updated `@uirouter/react` from 1.0.7 to 1.0.8
+
+
+Changelog for `@uirouter/react`:
+
+
+[Compare `@uirouter/react` versions 1.0.7 and 1.0.8](https://github.com/ui-router/react/compare/1.0.7...1.0.8)
+
+
+---
+
+
+### Updated `@uirouter/angularjs` from 1.0.29 to 1.1.2
+
+
+Changelog for `@uirouter/angularjs`:
+
+
+[Compare `@uirouter/angularjs` versions 1.0.29 and 1.1.2](https://github.com/angular-ui/ui-router/compare/1.0.29...1.1.2)
+
+### Features
+
+* update uirouter core ([#3859](https://github.com/angular-ui/ui-router/issues/3859)) ([275c595](https://github.com/angular-ui/ui-router/commit/275c595))
+* **package:** move [@uirouter](https://github.com/uirouter)/core to peerDeps as per other uirouter packages ([#3850](https://github.com/angular-ui/ui-router/issues/3850)) ([6dd057c](https://github.com/angular-ui/ui-router/commit/6dd057c))
+
 ## 1.0.5 (2022-02-28)
 [Compare `@uirouter/react-hybrid` versions 1.0.4 and 1.0.5](https://github.com/ui-router/react-hybrid/compare/1.0.4...1.0.5)
 
