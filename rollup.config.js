@@ -1,11 +1,13 @@
+import { createRequire } from 'module';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import commonjs from '@rollup/plugin-commonjs';
 
-let MINIFY = process.env.MINIFY;
+const require = createRequire(import.meta.url);
+const pkg = require('./package.json');
 
-let pkg = require('./package.json');
+let MINIFY = process.env.MINIFY;
 let banner = `/**
  * ${pkg.description}
  * @version v${pkg.version}
