@@ -1,6 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { HtmlRspackPlugin } = require('@rspack/core');
 
+/** @type {import('@rspack/cli').Configuration} */
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
 
@@ -11,21 +12,39 @@ module.exports = (env, argv) => {
       filename: isProduction ? '[name].[contenthash].js' : '[name].js',
       clean: true,
     },
+    experiments: {
+      css: true,
+    },
     module: {
       rules: [
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          use: 'babel-loader',
+          use: {
+            loader: 'builtin:swc-loader',
+            options: {
+              jsc: {
+                parser: {
+                  syntax: 'ecmascript',
+                  jsx: true,
+                },
+                transform: {
+                  react: {
+                    runtime: 'automatic',
+                  },
+                },
+              },
+            },
+          },
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          type: 'css',
         },
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin({
+      new HtmlRspackPlugin({
         template: './public/index.html',
       }),
     ],
