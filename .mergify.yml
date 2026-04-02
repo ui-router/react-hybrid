@@ -7,7 +7,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-      delete_head_branch:
 
   - name: Auto Rebase and Merge
     conditions:
@@ -17,4 +16,3 @@ pull_request_rules:
     actions:
       merge:
         method: rebase
-      delete_head_branch:
