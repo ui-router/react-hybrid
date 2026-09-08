@@ -90,7 +90,7 @@ const mainConfig = {
   external: isExternal,
 };
 
-// Legacy entry point (React 16/17)
+// Legacy entry point (React 17)
 const legacyConfig = {
   input: 'lib-esm/legacy.js',
   output: {
