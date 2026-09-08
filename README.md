@@ -55,14 +55,14 @@ Add the `react` and `react-dom` dependencies.
 
 ### Add AngularJS module for hybrid support
 
-Note: This library supports React 16/17/18/19.
-For React 16/17 support, import from `@uirouter/react-hybrid/legacy`.
+Note: This library supports React 17/18/19.
+For React 17 support, import from `@uirouter/react-hybrid/legacy`.
 
 ```js
 // React 18/19
 import { UI_ROUTER_REACT_HYBRID } from '@uirouter/react-hybrid';
 
-// React 16/17
+// React 17
 // import { UI_ROUTER_REACT_HYBRID } from '@uirouter/react-hybrid/legacy';
 
 let ng1module = angular.module('myApp', ['ui.router', UI_ROUTER_REACT_HYBRID]);
