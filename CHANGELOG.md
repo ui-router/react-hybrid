@@ -1,3 +1,10 @@
+# 3.0.0 (2026-09-08)
+[Compare `@uirouter/react-hybrid` versions 2.0.0 and 3.0.0](https://github.com/ui-router/react-hybrid/compare/2.0.0...3.0.0)
+
+# BREAKING CHANGES
+
+* Drop support for React 16
+
 # 2.0.0 (2026-01-08)
 [Compare `@uirouter/react-hybrid` versions 1.0.5 and 2.0.0](https://github.com/ui-router/react-hybrid/compare/1.0.5...2.0.0)
 
