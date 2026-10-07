@@ -238,10 +238,10 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.55.1.tgz#f79437939020b83057faf07e98365b1fa51c458b"
   integrity sha512-SPEpaL6DX4rmcXtnhdrQYgzQ5W2uW3SCJch88lB2zImhJRhIIK44fkUrgIV/Q8yUNfw5oyZ5vkeQsZLhCb06lw==
 
-"@types/angular@^1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@types/angular/-/angular-1.8.2.tgz#35d357097a853147a1b65ad34670322ca4e56b69"
-  integrity sha512-V0Hgx2Q3wFNcrrmx8zVepdasDuwnK4lqQFe0Zr9Ll3DoTJIuhKOpyfHC6KuVDBXJGgTkMKtELbvDe9crIkSGzg==
+"@types/angular@^1.8.9":
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/@types/angular/-/angular-1.8.9.tgz#d1ae3e87a67f72342d55ff26e611df83df0fb176"
+  integrity sha512-Z0HukqZkx0fotsV3QO00yqU9NzcQI+tMcrum+8MvfB4ePqCawZctF/gz6QiuII+T1ax+LitNoPx/eICTgnF4sg==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
